@@ -1,36 +1,56 @@
 <?php
 session_start();
+include('../logic/connect.php'); //链接数据库
+header("content-type: text/html; charset=utf8");
+$courseInfo = array();
+$allCourse = array();
+$userid = $_SESSION['id'];
+$sql = "select *from course";
+$result = mysqli_query($con, $sql); //执行sql
+$row = mysqli_fetch_assoc($result);
+$rows = mysqli_num_rows($result);
+if($rows) 
+	array_push($courseInfo,$row['name']);//读取第一个数据
+if ($result->num_rows)
+    while($row = $result->fetch_assoc())
+		array_push($courseInfo,$row['name']);//读取其他数据
+		$sql = "select *from info where user_id = $userid";
+		$result = mysqli_query($con, $sql); //执行sql
+		$row = mysqli_fetch_assoc($result);
+		$rows = mysqli_num_rows($result); 
+		if ($rows) 
+			array_push($allCourse,$row['course_id']);//读取第一个数据
+		
+		if ($result->num_rows)
+			while($row = $result->fetch_assoc())
+				array_push($allCourse,$row['course_id']);//读取其他数据
+sort($allCourse);		
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Head -->
 <head>
-	<title>HUSTLE</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
-	<meta name="keywords" content="" />
+<title>About</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="" />
 
-	<!-- default css files -->
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/font-awesome.min.css" />
-	<!-- default css files -->
-
-	<!--web font-->
-	<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
-	<!--//web font-->
-
-
-
-</head>
+<!-- default css files -->
+	<link rel="stylesheet" href="../css/bootstrap.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../css/font-awesome.min.css" />
+<!-- default css files -->
+	
+<!--web font-->
+<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+<!--//web font-->
+	
 
 <!-- Body -->
-
 <body>
-
 	<!-- banner -->
-	<div class="banner">
+	<div class="banner1">
 		<div class="header-top">
 			<div class="container">
 				<div class="header-top-right">
@@ -38,11 +58,11 @@ session_start();
 					<?php
 					if (isset($_SESSION['username'])) {
 						$name = $_SESSION['username'];
-					   if($_SESSION['isTeacher'])
+						if($_SESSION['isTeacher'])
 							 echo "<p>欢迎,$name 老师</p>";
 						else
 							echo "<p>欢迎,$name 同学</p>";
-					} 
+					}
 					?>
 				</div>
 			</div>
@@ -64,9 +84,10 @@ session_start();
 						</div>
 
 					</div>
+
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav link-effect-4">
+					<ul class="nav navbar-nav link-effect-4">
 							<li class="active"><a href="index.php" data-hover="Home">主页</a> </li>
 							<li><a href="syllabus.php">课程表 </a> </li>
 							<li class="dropdown">
@@ -96,55 +117,45 @@ session_start();
 				<div class="clearfix"></div>
 			</div>
 		</div>
-		<div class="bannerinfo">
-			<div class="container">
-				<div class="col-md-5 bannergrid">
-					<div class="top">
-						<h5>Huazhong University of Science and Technology</h5>
-						<h2>Lecture Enhancement</h2>
-					</div>
-					<div class="bottom">
-						<div class="col-md-6 bannergrid1 clr">
-							<h4><a href="attendance+.php" style="color: white">签到 🙋‍🙋‍♂️</a></h4>
-							<div class="clearfix"></div>
-							<p>选择课堂</p>
-							<p>参加课堂签到</p>
-						</div>
-						<div class="col-md-6 bannergrid1 clr1">
-							<h4><a href="course.php" style="color: white">课程中心 📚</a></h4>
-							<div class="clearfix"></div>
-							<ul>
-								<p>布告板</p>
-								<p>成绩查询</p>
-						</div>
-						<div class="clearfix"></div>
-						<div class="col-md-6 bannergrid1 clr2">
-							<h4><a href="quiz.php" style="color: white">Quiz ✏️</a></h4>
-							<div class="clearfix"></div>
-							<p>进入课堂小测</p>
-							<p>参加讨论</p>
-
-						</div>
-						<div class="col-md-6 bannergrid1 clr3">
-							<h4><a href="setting.php" style="color: white">设置 🔧</a></h4>
-							<div class="clearfix"></div>
-							<p>设置课堂信息</p>
-							<p>设置账号信息</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
+		<h2>课程中心</h2>
 
 	</div>
+	<!-- //banner -->
+	<table border="3"  width="500" bgcolor="aqua" align="center" cellpadding="5" cellspacing="1">
+    <tr align="center" bgcolor="white" height="50" >
+        <td>课程名称</td>
+		<td>状态</td>
+		<td>操作</td>
+	</tr>
 
+	<?php
+	$count = 0;
+	for($i=0;$i<count($courseInfo);$i++){
+		echo'<tr>';
+		echo"<td>$courseInfo[$i]</td>";
+		if($i+1==$allCourse[$count]){
+			echo"<td>已选</td>";
+			echo'<form action="../logic/course.php" method="get">';
+			echo"<td><button value=$i name= \"quit\" type=\"submit\">退选</button></td>";
+			$count++;
+		}
+		else {
+			echo"<td>未选</td>";
+			echo'<form action="../logic/course.php" method="get">';
+			echo"<td><button value=$i name= \"attend\" type=\"submit\">选课</button></td>";
+		}
+		echo'</tr>';
+	}
+	
+	?>
+	
+	</script>
 	<!-- Default-JavaScript-File -->
 	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<!-- //Default-JavaScript-File -->
 
-</body>
 
-	</html>
+</body>
+<!-- //Body -->
+</html>

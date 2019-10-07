@@ -11,9 +11,9 @@ session_start();
 	<meta name="keywords" content="" />
 
 	<!-- default css files -->
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../css/font-awesome.min.css" />
 	<!-- default css files -->
 
 	<!--web font-->
@@ -87,7 +87,7 @@ session_start();
 							if (isset($_SESSION['username'])) {
 								echo '<li><a href="quit.php">退出登录</a> </li>';
 							} else {
-								echo '<li ><a href="welcome.php" >登录/注册</a> </li>';
+								echo '<li ><a href="../welcome.php" >登录/注册</a> </li>';
 							}
 							?>
 						</ul>
@@ -105,7 +105,7 @@ session_start();
 					</div>
 					<div class="bottom">
 						<div class="col-md-6 bannergrid1 clr">
-							<h4><a href="attendance+.php" style="color: white">签到 🙋‍🙋‍♂️</a></h4>
+							<h4><a href="attendance.php" style="color: white">签到 🙋‍🙋‍♂️</a></h4>
 							<div class="clearfix"></div>
 							<p>选择课堂</p>
 							<p>参加课堂签到</p>
@@ -141,8 +141,8 @@ session_start();
 	</div>
 
 	<!-- Default-JavaScript-File -->
-	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
 	<!-- //Default-JavaScript-File -->
 
 </body>
