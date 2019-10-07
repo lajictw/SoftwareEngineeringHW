@@ -36,7 +36,7 @@
 					if (isset($_SESSION['username'])) {
 						$name = $_SESSION['username'];
 					   if($_SESSION['isTeacher'])
-							 echo "<p>欢迎,$name 老师</p>";
+							 echo "<p>欢迎,$name ctw</p>";
 						else
 							echo "<p>欢迎,$name 同学</p>";
 					} 
