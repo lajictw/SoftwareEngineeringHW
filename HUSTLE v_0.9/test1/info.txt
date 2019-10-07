@@ -1,0 +1,70 @@
+HUSTLE 
+-------------------------------------------------
+version 0.0
+-------------------------------------------------
+文件说明：
+attendance.html:对应“签到”的HTML文件
+course.html:对应“课程中心”的HTML文件
+event.html:对应“通知”的HTML文件
+index.html:对应“主页”的HTML文件
+quiz.html:对应“QUIZ”的HTML文件
+setting.html:对应“设置”的HTML文件
+submit.html:对应“提交”的HTML文件
+syllabus.html:对应“课程表”的HTML文件
+-------------------------------------------------
+TODO:
+attendance.html:（学生）通过数据库导入学生课程当天的课程表，每个项目后面有“签到”按钮
+course.html:（教师）添加上传课件、文件、通知的选项/（学生）下载课件、文件、通知的选项
+event.html:添加学校的通知和课堂的通知
+index.html:添加登录选择（学生&教师）
+quiz.html:添加发布小测、讨论（教师）/参加小测、讨论（学生）
+setting.html:可以更改的选择[背景、账户信息....]
+submit.html:（学生）增加提交作业/实验的选择
+syllabus.html:（学生）通过数据库导入学生课程当天的课程表
+-------------------------------------------------
+
+-------------------------------------------------
+version 0.1
+-------------------------------------------------
+数据库说明：
+--  $server="localhost:3306";//主机
+    $db_username="root";//数据库用户名
+    $db_password="123456";//数据库密码
+-- 省略了user的描述（只有id,name,pwd,isTeacher.很简单）
+CREATE TABLE course (
+    id int,--course的编号
+    name VARCHAR(20),--course的名称
+    start int,--course开始的周（1-17）
+    end int,--course结束的周（1-17，为了简单就默认连续吧= =）
+    first int,--在星期几（1-7）
+    second int,--在星期几（0-7,0代表没有）
+    time int--course在第几节（1-11，默认占两节吧！）
+);
+CREATE TABLE info(
+    user_id int, -- 学生及教师编号
+    course_id int, -- 课程号
+    first_attendance int,
+    second_attendance int,
+    exp int,
+    homework int
+);
+
+--解决 ERROR 1366 (HY000)的方法:
+alter table course change name name varchar(20) character set utf8 collate utf8_unicode_ci not null default'';
+--或者：
+show variables like 'charac%';
+SET character_XXX='utf8';
+
+--快速导入：
+mysql> source 你的sql文件路径/XXX.sql;
+
+--解决中文乱码:
+ mysqli_query($con,'set names utf8'); --connect.php
+ --PHP插入字符串（$opt4）
+ mysqli_query($con,"INSERT INTO course(name,first,second,time) VALUES ($class,'".$opt4."',$opt1,$opt2,$opt3)");
+--无法插入中文字符串
+
+alter table 数据表名 CONVERT TO CHARACTER SET utf8
+
+
+"INSERT INTO updfiles(user_id,course_id,name, type, size) VALUES ($id,$class,abc,zip,10240)";

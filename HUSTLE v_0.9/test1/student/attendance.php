@@ -1,19 +1,48 @@
 <?php
+include('../logic/connect.php'); //链接数据库
+header("content-type: text/html; charset=utf8");
 session_start();
+$userid = $_SESSION['id'];
+$days = array("Null", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
+$times = array("Null", "section:1-2", "section:2-3", "section:3-4", "section:5-6", "section:7-8");
+$sql = "select * from info where user_id = $userid and first_attendance = 1 or user_id = $userid and second_attendance =1";
+$result = mysqli_query($con, $sql); //执行sql
+$rows = mysqli_num_rows($result); //返回一个数值
+$row = mysqli_fetch_assoc($result);
+	if ($rows) {
+		$first = $row['first_attendance'];
+		$_SESSION['course'] = $row['course_id'];
+		$_SESSION['isFirst'] = $first;
+		$second = $row['second_attendance'];
+		$_SESSION['isSecond'] = $second;
+		$course =  $row['course_id'];
+		$newSql = "select * from course where id = $course";
+		$newResult = mysqli_query($con, $newSql); //执行sql
+		$newRows = mysqli_num_rows($newResult); //返回一个数值
+		$newRow = mysqli_fetch_assoc($newResult);
+		if ($newRows) {
+			$course_name = $newRow['name'];
+			$firstclass = $newRow['first'];
+			$secondclass = $newRow['second'];
+			$time = $newRow['time'];
+		}
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<!-- Head -->
 
 <head>
-	<title>HUSTLE</title>
+	<title>About</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
+	<meta charset="utf8">
 	<meta name="keywords" content="" />
 
 	<!-- default css files -->
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="../css/bootstrap.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../css/font-awesome.min.css" />
 	<!-- default css files -->
 
 	<!--web font-->
@@ -22,15 +51,11 @@ session_start();
 	<!--//web font-->
 
 
-
-</head>
-
-<!-- Body -->
+	<!-- Body -->
 
 <body>
-
 	<!-- banner -->
-	<div class="banner">
+	<div class="banner1">
 		<div class="header-top">
 			<div class="container">
 				<div class="header-top-right">
@@ -38,11 +63,8 @@ session_start();
 					<?php
 					if (isset($_SESSION['username'])) {
 						$name = $_SESSION['username'];
-					   if($_SESSION['isTeacher'])
-							 echo "<p>欢迎,$name 老师</p>";
-						else
-							echo "<p>欢迎,$name 同学</p>";
-					} 
+						echo "<p>欢迎,$name 同学</p>";
+					}
 					?>
 				</div>
 			</div>
@@ -64,6 +86,7 @@ session_start();
 						</div>
 
 					</div>
+
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav link-effect-4">
@@ -96,55 +119,33 @@ session_start();
 				<div class="clearfix"></div>
 			</div>
 		</div>
-		<div class="bannerinfo">
-			<div class="container">
-				<div class="col-md-5 bannergrid">
-					<div class="top">
-						<h5>Huazhong University of Science and Technology</h5>
-						<h2>Lecture Enhancement</h2>
-					</div>
-					<div class="bottom">
-						<div class="col-md-6 bannergrid1 clr">
-							<h4><a href="attendance+.php" style="color: white">签到 🙋‍🙋‍♂️</a></h4>
-							<div class="clearfix"></div>
-							<p>选择课堂</p>
-							<p>参加课堂签到</p>
-						</div>
-						<div class="col-md-6 bannergrid1 clr1">
-							<h4><a href="course.php" style="color: white">课程中心 📚</a></h4>
-							<div class="clearfix"></div>
-							<ul>
-								<p>布告板</p>
-								<p>成绩查询</p>
-						</div>
-						<div class="clearfix"></div>
-						<div class="col-md-6 bannergrid1 clr2">
-							<h4><a href="quiz.php" style="color: white">Quiz ✏️</a></h4>
-							<div class="clearfix"></div>
-							<p>进入课堂小测</p>
-							<p>参加讨论</p>
-
-						</div>
-						<div class="col-md-6 bannergrid1 clr3">
-							<h4><a href="setting.php" style="color: white">设置 🔧</a></h4>
-							<div class="clearfix"></div>
-							<p>设置课堂信息</p>
-							<p>设置账号信息</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
-
+		<?php
+		if (isset($_SESSION['username'])){
+			if($first)
+				echo "<h2>'$course_name'课请签到:$days[$firstclass],$times[$time]</h2>";
+			else if($second)
+				echo "<h2>'$course_name'课请签到:$days[$secondclass],$times[$time]</h2>";
+			else
+				echo "<h2>签到已完成</h2>";
+		} 
+		?>
 	</div>
+	<!-- //banner -->
+	    
+	<?php
+		if($first||$second)
+			echo'
+			<form action="../logic/confirm_attendance.php" method="post">
+			<input type="submit" name="sub_btn" value="签到">
+			';
+	?>
+		<!-- Default-JavaScript-File -->
+		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<!-- //Default-JavaScript-File -->
 
-	<!-- Default-JavaScript-File -->
-	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<!-- //Default-JavaScript-File -->
 
 </body>
+<!-- //Body -->
 
-	</html>
+</html>
