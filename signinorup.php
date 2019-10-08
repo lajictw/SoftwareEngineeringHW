@@ -17,7 +17,6 @@ include("./logic/connect.php");
 	<!-- default css files -->
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 	<!-- <link rel="stylesheet" href="css/font-awesome.min.css" /> -->
-
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 	
@@ -55,9 +54,9 @@ include("./logic/connect.php");
 			</form>
 			<form name="signin" action="logic/signin.php" method="post">
 				<div class="input_signin">
-					<input class="input" id="login_user_name" type="text" aria-label="用户名" placeholder="用户名">
+					<input class="input" id="login_user_name"name="name" type="text" aria-label="用户名" placeholder="用户名">
 					<div class="hint">请输入用户名</div>
-					<input class="input" id="login_password" type="password" aria-label="密码" placeholder="密码">
+					<input class="input" id="login_password" name="password" type="password" aria-label="密码" placeholder="密码">
 					<div class="hint">请输入密码</div>
 					<input type="submit" id="button" class="button" name="submit" value="登录">
 					<!-- <div class="forget">

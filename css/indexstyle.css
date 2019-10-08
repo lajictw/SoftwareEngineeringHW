@@ -1,0 +1,104 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #FFF;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body a {
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    text-decoration: none;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+
+img {
+    vertical-align: middle;
+    width: 100%;
+}
+
+
+/*-- banner --*/
+.head {
+    padding: 0.5em 0em;
+    background-color: gainsboro;
+    border-bottom: solid 1px #cbcbcb;
+}
+
+/*--header--*/
+.logo h1 a {
+    text-decoration: none;
+    color: royalblue;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1em;
+}
+
+body {
+    margin: 0;
+    color: #555;
+    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+    font-size: 15px;
+}
+
+container a {
+    color: #555;
+    text-decoration: none;
+}
+
+/* 
+.login_cont {
+    margin: 50px auto;
+    width: 300px;
+}
+
+.login_cont .input_signup,
+.login_cont .input_signin {
+    display: none;
+}
+
+.login_cont .active {
+    display: block;
+}
+
+.login_nav {
+    width: 300px;
+    height: 45px;
+    text-align: center;
+    margin-bottom: 20px;
+} */
+
+.nav_slider {
+    display: inline-block;
+}
+
+.nav_slider a {
+    display: inline-block;
+    width: 75px;
+    line-height: 35px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+/* .nav_slider .focus {
+    border-bottom: 2px solid #3cf;
+} */
