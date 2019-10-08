@@ -116,12 +116,6 @@ session_start();
 		</div>
 	</div>
 
-	<!-- Default-JavaScript-File -->
-	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<!-- //Default-JavaScript-File -->
-
-
 </body>
 <!-- //Body -->
 

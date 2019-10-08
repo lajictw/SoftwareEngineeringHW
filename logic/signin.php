@@ -1,11 +1,11 @@
 <?PHP
     header("Content-Type: text/html; charset=utf8");
     if(!isset($_POST["submit"])){
-        exit("错误执行");
+        exit("无权限调用！");
     }//检测是否有submit操作 
     include('connect.php');//链接数据库
-    $name = $_POST['name'];//post获得用户名表单值
-    $passowrd = $_POST['password'];//post获得用户密码单值
+    $name = $_POST['login_user_name'];//post获得用户名表单值
+    $passowrd = $_POST['login_password'];//post获得用户密码单值
 
 
     if ($name && $passowrd){//如果用户名和密码都不为空
