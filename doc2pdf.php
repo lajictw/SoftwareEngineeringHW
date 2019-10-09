@@ -1,7 +1,9 @@
 <?php
 $conv=new Convert;
-$conv->run("C:/Users/Zayle/WeDiary/test.doc","C:/Users/Zayle/WeDiary/test.pdf");
-
+$prename="C:/Users/Zayle/WeDiary/test.doc";
+$postname="C:/Users/Zayle/WeDiary/test.pdf";
+$conv->run($prename,$postname);
+exec("pdftotext $postname");
 class Convert{
     
     private $osm;

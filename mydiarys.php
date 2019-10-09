@@ -24,7 +24,9 @@ session_start();
 	<!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<!--custom css-->
-	<link href="css/style_welcome.css" rel="stylesheet" type="text/css" />
+	<link href="css/change.css" rel="stylesheet" type="text/css">
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+	<link href="css/login.css" rel="stylesheet" type="text/css">
 	<!--component-css-->
 	<script src="travel/js/jquery-2.1.4.min.js"></script>
 	<script src="travel/js/bootstrap.min.js"></script>
@@ -52,35 +54,23 @@ session_start();
 						<h5 class="pro-link"><a href="welcome.php">微日记</a></h5>
 					</div>
 					<div class="Profile-right">
-						<?php
-						if (isset($_SESSION['username'])) 
-						{
-							$name = $_SESSION['username'];
-						}
-						else
-						$name = '游客';
-						echo "<a>$name , 你好！</a>";
-						?>
-						<!-- modal -->
-
-						<!-- //modal-two -->
+                        
+<?php
+if (isset($_SESSION['username'])) {
+    $name = $_SESSION['username'];
+} else {
+    $name = '游客';
+}
+echo "<a>$name , 你好！</a>";
+?>
 
 					</div>
-					<div class="clearfix"></div>
-				</div>
+					<div class="clearfix">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 				<!-- banner -->
-				<div class="details-grid">
-					<div class="details-shade">
-					</div>
-				</div>
-				<div class="w3agile banner-bottom">
-				<ul>
-				    <li><a href="upload.php" class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a><h6>上传作文</h6></li>
-					<li><a href="train.html" class="hvr-radial-out"><i class="fa fa-star" aria-hidden="true"></i></a><h6>优秀作文</h6></li>
-					<li><a href="mydiarys.php" class="hvr-radial-out"><i class="fa fa-list" aria-hidden="true"></i></a><h6>我的作文</h6></li>
-					<li><a href="change.php" class="hvr-radial-out"><i class="fa fa-user" aria-hidden="true"></i></a><h6>修改资料</h6></li>
-				</ul>
-			</div>
-			</div>
-		</div>
+	
 </body>

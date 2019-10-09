@@ -1,2 +1,3 @@
 <?php
-phpinfo();
+$com = new COM('word.application'); 
+echo $com;
