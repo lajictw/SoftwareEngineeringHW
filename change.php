@@ -24,7 +24,7 @@ session_start();
 	<!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<!--custom css-->
-	<link href="css/style_welcome.css" rel="stylesheet" type="text/css" />
+	<link href="css/change.css" rel="stylesheet" type="text/css" />
 	<!--component-css-->
 	<script src="travel/js/jquery-2.1.4.min.js"></script>
 	<script src="travel/js/bootstrap.min.js"></script>
@@ -69,16 +69,11 @@ session_start();
 					<div class="clearfix"></div>
 				</div>
 				<!-- banner -->
-				<div class="details-grid">
-					<div class="details-shade">
-					</div>
-				</div>
 				<div class="w3agile banner-bottom">
 				<ul>
-				    <li><a href="upload.php" class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a><h6>上传作文</h6></li>
-					<li><a href="train.html" class="hvr-radial-out"><i class="fa fa-star" aria-hidden="true"></i></a><h6>优秀作文</h6></li>
-					<li><a href="bus.html" class="hvr-radial-out"><i class="fa fa-list" aria-hidden="true"></i></a><h6>我的作文</h6></li>
-					<li><a href="change.php" class="hvr-radial-out"><i class="fa fa-user" aria-hidden="true"></i></a><h6>修改资料</h6></li>
+				    <li><h6>用户名</h6></li>
+					<li><h6>邮箱</h6></li>
+					<li><h6>密码</h6></li>
 				</ul>
 			</div>
 			</div>
