@@ -1,150 +1,107 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+<!-- Head -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript">
+	addEventListener("load", function() {
+		setTimeout(hideURLbar, 0);
+	}, false);
+
+	function hideURLbar() {
+		window.scrollTo(0, 1);
+	}
+</script>
+<meta charset utf="8">
 
 <head>
-	<title>HUSTLE</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
-	<meta name="keywords" content="" />
-
-	<!-- default css files -->
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/font-awesome.min.css" />
-	<!-- default css files -->
-
-	<!--web font-->
-	<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
-	<!--//web font-->
-
-
-
+	<!--font-awsome-css-->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!--bootstrap-->
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<!--custom css-->
+	<link href="css/style_index.css" rel="stylesheet" type="text/css" />
+	<!--component-css-->
+	<script src="travel/js/jquery-2.1.4.min.js"></script>
+	<script src="travel/js/bootstrap.min.js"></script>
+	<!--script-->
+	<script src="travel/js/modernizr.custom.js"></script>
+	<script src="travel/js/bigSlide.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.menu-link').bigSlide();
+		});
+	</script>
+	<!-- web-fonts -->
+	<link href='http://fonts.useso.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<!-- //web-fonts -->
 </head>
 
-<!-- Body -->
-
 <body>
+	<div class="body-back">
+		<div class="masthead pdng-stn1">
+			<div id="menu" class="panel" role="navigation">
+				<div class="wrap-content">
+					<div class="profile-menu text-center">
+						<img class="border-effect" src="images/pen.png" alt=" ">
+						<h3>MENU</h3>
 
-	<!-- banner -->
-	<div class="banner">
-		<div class="header-top">
-			<div class="container">
-				<div class="header-top-right">
-					<p><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:example@example.com">example@hust.edu.cn</a></p>
-					<?php
-					if (isset($_SESSION['username'])) {
-						$name = $_SESSION['username'];
-					   if($_SESSION['isTeacher'])
-							 echo "<p>欢迎,$name 老师</p>";
-						else
-							echo "<p>欢迎,$name 同学</p>";
-					} 
-					?>
+						<div class="pro-menu">
+							<div class="logo">
+								<li><a class=" link link--yaku  active" href="travel/main.html"><span>H</span><span>o</span><span>m</span><span>e</span></a></li>
+								<li><a class=" link link--yaku" href="travel/about.html"><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span></a></li>
+								<li><a class=" link link--yaku" href="travel/short-codes.html"><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span></a></li>
+								<li><a class=" link link--yaku" href="travel/destination.html"><span>D</span><span>e</span><span>s</span><span>t</span><span>i</span><span>n</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span></a></li>
+								<li><a class=" link link--yaku" href="travel/contact.html"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></a></li>
+							</div>
+
+
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="head">
-			<div class="container">
-				<div class="navbar-top">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<div class="navbar-brand logo ">
-							<h1 class="animated wow pulse" data-wow-delay=".5s">
-								<a href="index.php">华中科技大学网络课堂系统</a></h1>
-						</div>
-
+			<div class="phone-box wrap push" id="home">
+				<div class="menu-notify">
+					<div class="profile-left">
+						<a href="travel/#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav link-effect-4">
-							<li class="active"><a href="upload.html" data-hover="Home">主页</a> </li>
-							<li><a href="syllabus.php">课程表 </a> </li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">通知<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="event.php#school">学校通知</a></li>
-									<li><a href="event.php#class">课堂通知</a></li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">提交<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="submit.php#assignment">提交作业</a></li>
-									<li><a href="submit_exp.php#lab">提交实验</a></li>
-								</ul>
-							</li>
-							<?php
-							if (isset($_SESSION['username'])) {
-								echo '<li><a href="quit.php">退出登录</a> </li>';
-							} else {
-								echo '<li ><a href="welcome.php" >登录/注册</a> </li>';
-							}
-							?>
-						</ul>
-					</div><!-- /.navbar-collapse -->
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-		<div class="bannerinfo">
-			<div class="container">
-				<div class="col-md-5 bannergrid">
-					<div class="top">
-						<h5>Huazhong University of Science and Technology</h5>
-						<h2>Lecture Enhancement</h2>
+					<div class="Profile-mid">
+						<h5 class="pro-link"><a href="index.php">微日记</a></h5>
 					</div>
-					<div class="bottom">
-						<div class="col-md-6 bannergrid1 clr">
-							<h4><a href="attendance+.php" style="color: white">签到 🙋‍🙋‍♂️</a></h4>
-							<div class="clearfix"></div>
-							<p>选择课堂</p>
-							<p>参加课堂签到</p>
+					<div class="Profile-right">
+						<a href="signinorup.php" class="sign-in or sign-up"> 
+							<i class="fa fa-user"></i>
+						</a>
+						<!-- modal -->
+						<div id="small-dialog" class="mfp-hide">
+							<div class="login-modal">
+								<div class="booking-info">
+								</div>
+								<div class="login-form">
+								</div>
+							</div>
 						</div>
-						<div class="col-md-6 bannergrid1 clr1">
-							<h4><a href="course.php" style="color: white">课程中心 📚</a></h4>
-							<div class="clearfix"></div>
-							<ul>
-								<p>布告板</p>
-								<p>成绩查询</p>
+						<div id="small-dialog1" class="mfp-hide">
+							<div class="login-modal">
+								<div class="booking-info">
+								</div>
+								<div class="login-form signup-form">
+								</div>
+							</div>
 						</div>
-						<div class="clearfix"></div>
-						<div class="col-md-6 bannergrid1 clr2">
-							<h4><a href="quiz.php" style="color: white">Quiz ✏️</a></h4>
-							<div class="clearfix"></div>
-							<p>进入课堂小测</p>
-							<p>参加讨论</p>
+						<!-- //modal-two -->
 
-						</div>
-						<div class="col-md-6 bannergrid1 clr3">
-							<h4><a href="setting.php" style="color: white">设置 🔧</a></h4>
-							<div class="clearfix"></div>
-							<p>设置课堂信息</p>
-							<p>设置账号信息</p>
-						</div>
-						<div class="clearfix"></div>
 					</div>
 					<div class="clearfix"></div>
 				</div>
+				<!-- banner -->
+				<div class="details-grid">
+					<div class="details-shade">
+					</div>
+				</div>
+
 			</div>
 		</div>
-
-	</div>
-
-	<!-- Default-JavaScript-File -->
-	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<!-- //Default-JavaScript-File -->
-
 </body>
-
-	</html>
