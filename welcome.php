@@ -36,6 +36,7 @@ session_start();
 			$('.menu-link').bigSlide();
 		});
 	</script>
+	<title>欢迎使用微日记</title>
 	<!-- web-fonts -->
 	<link href='http://fonts.useso.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -74,7 +75,7 @@ session_start();
 				</div>
 				<div class="w3agile banner-bottom">
 				<ul>
-				    <li><a href="flight.html" class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a><h6>上传作文</h6></li>
+				    <li><a href="upload.php" class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a><h6>上传作文</h6></li>
 					<li><a href="train.html" class="hvr-radial-out"><i class="fa fa-star" aria-hidden="true"></i></a><h6>优秀作文</h6></li>
 					<li><a href="bus.html" class="hvr-radial-out"><i class="fa fa-list" aria-hidden="true"></i></a><h6>我的作文</h6></li>
 					<li><a href="hotel.html" class="hvr-radial-out"><i class="fa fa-user" aria-hidden="true"></i></a><h6>修改资料</h6></li>

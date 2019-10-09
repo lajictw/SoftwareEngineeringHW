@@ -12,9 +12,11 @@ if ($name && $passowrd) { //如果用户名和密码都不为空
     $result = mysqli_query($con, $sql); //执行sql
     $rows = mysqli_num_rows($result); //返回一个数值
     $row = mysqli_fetch_assoc($result);
+    $userid=$row['id'];
     if ($rows > 0) {
         session_start();
         $_SESSION['username'] = $name;
+        $_SESSION['userid']=$userid;
         echo "<script>alert('登陆成功!')</script>";
         header("refresh:0;url=../welcome.php");
     } else {

@@ -19,4 +19,13 @@ $sql = "CREATE TABLE IF NOT EXISTS users(
 if (!$con->query($sql)) {
     die("创建数据表错误: " . $con->error);
 }
+$sql = "CREATE TABLE IF NOT EXISTS files(
+        id INT(6)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        fname VARCHAR(30) NOT NULL,
+        fpath VARCHAR(30),
+        userid INT(6)
+        )";
+if (!$con->query($sql)) {
+    die("创建数据表错误: " . $con->error);
+}
 ?>
