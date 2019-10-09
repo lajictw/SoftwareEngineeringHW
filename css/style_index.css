@@ -401,7 +401,7 @@ p {
 }
 
 .details-grid {
-    background: url(../images/banner-h.jpg) no-repeat 0px 0px;
+    background: url(../images/banner.jpg) no-repeat 0px 0px;
     background-size: cover;
 	-webkit-background-size: cover;
 	 -moz-background-size: cover;
@@ -712,7 +712,7 @@ background: #020202 url(../images/search.png) no-repeat 17px 8px;
     color: #999;
     position: relative;
     z-index: 1;
-    -webkit-backface-visibility: hidden;
+    /* -webkit-backface-visibility: hidden; */
     -moz-osx-font-smoothing: grayscale;
     display: block;
     text-align: center;
@@ -1428,6 +1428,7 @@ input.text_box {
     font-size: 16px;
     outline: none;
     width: 100%;
+	/* webkit-appearance:none; */
 	    transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;

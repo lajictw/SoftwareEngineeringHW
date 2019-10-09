@@ -5,7 +5,7 @@ h1, h2, h3 {
 ul, ol, li{margin: 0; padding: 0;}
 p {margin: 0;padding: 0;}
 body{	
-background: #043d67;
+background: white;
 	font-family: 'Open Sans', sans-serif;
 	margin:0;
 	padding:0;
@@ -41,7 +41,7 @@ h1,h2,h3,h4,h5,h6{
 }
 .main_frame.second {
     height: 100%;
-       background-color: #02243e;
+       background-color: #ffffff;
     padding: 5px;
     border-radius: 45px;
 	-webkit-border-radius:45px;
@@ -141,8 +141,7 @@ h5.pro-link a{
     font-family: 'Open Sans', sans-serif;
     color: #fff;
     font-size: 18px;
-    font-weight: 300;
-    text-transform: uppercase;
+    /* font-weight: 300; */
 }
 h5.pro-link a:hover{
 	text-decoration:none;
@@ -156,7 +155,15 @@ h5.pro-link a:hover{
     font-size: 20px;
     color: #fff;
 }
-.profile-left i{
+.Profile-right a{
+	font-size: 18px;
+	margin: 0;
+    color: #fff;
+}
+.Profile-right a:hover{
+	text-decoration:none;
+}
+.profile-left i {
        font-size: 20px;
     color: #fff;
 }
@@ -401,7 +408,7 @@ p {
 }
 
 .details-grid {
-    background: url(../images/banner-h.jpg) no-repeat 0px 0px;
+    background: url(../images/banner.jpg) no-repeat 0px 0px;
     background-size: cover;
 	-webkit-background-size: cover;
 	 -moz-background-size: cover;
@@ -712,7 +719,7 @@ background: #020202 url(../images/search.png) no-repeat 17px 8px;
     color: #999;
     position: relative;
     z-index: 1;
-    -webkit-backface-visibility: hidden;
+    /* -webkit-backface-visibility: hidden; */
     -moz-osx-font-smoothing: grayscale;
     display: block;
     text-align: center;
@@ -1428,6 +1435,7 @@ input.text_box {
     font-size: 16px;
     outline: none;
     width: 100%;
+	/* webkit-appearance:none; */
 	    transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
