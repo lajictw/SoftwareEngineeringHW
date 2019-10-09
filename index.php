@@ -67,7 +67,7 @@ session_start();
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav link-effect-4">
-							<li class="active"><a href="upload.html" data-hover="Home">主页</a> </li>
+							<li class="active"><a href="doc2pdf.php" data-hover="Home">主页</a> </li>
 							<li><a href="syllabus.php">课程表 </a> </li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">通知<b class="caret"></b></a>
