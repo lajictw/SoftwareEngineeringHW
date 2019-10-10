@@ -1,9 +1,4 @@
 <?php
-$conv=new Convert;
-$prename="C:/Users/Zayle/WeDiary/test.doc";
-$postname="C:/Users/Zayle/WeDiary/test.pdf";
-$conv->run($prename,$postname);
-exec("pdftotext $postname");
 class Convert{
     
     private $osm;
@@ -42,8 +37,10 @@ class Convert{
             return ['error' => 1, 'msg' => '参数缺失', 'flag' => 'run'];
         }
         $input = "file:///" . str_replace("\\", "/", $input);
-        $output = "file:///" . str_replace("\\", "/", $output);
-        return $this->transform($input, $output);
+        $newoutput = "file:///" . str_replace("\\", "/", $output);
+        // exec("pdftotext $postname");
+        $this->transform($input, $newoutput);
+        exec("pdftotext $output");
+        return $output;
     }
-
 }

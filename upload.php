@@ -66,10 +66,10 @@ session_start();
                 <div class="w3agile banner-bottom">
                     <ul>
                         <!-- <style>button#uploadBtn{border: none;box-shadow: 0;}</style> -->
-                        <li><button id="uploadBtn" style="border:none;background:none;display:block"><a class="hvr-radial-out"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a></button>
+                        <li><button id="uploadBtn" style="border:none;background:none;display:block;outline:none"><a class="hvr-radial-out"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a></button>
                             <h6>选择文件</h6>
                         </li>
-                        <li><button id="submitBtn" style="border:none;background:none;display:block"><a class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a></button>
+                        <li style="display:none" id="uponUpload"><button id="submitBtn" style="border:none;outline:none;background:none;display:block"><a class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a></button>
                             <h6>立即上传</h6>
                         </li>
                     </ul>
@@ -95,6 +95,7 @@ session_start();
                                 } else {
                                     var fileName = fileobj.name;
                                     document.getElementById("showFilename").innerHTML = fileName;
+                                    document.getElementById("uponUpload").style.display="inline-block";
                                 }
                             }
                             $("#submitBtn").click(

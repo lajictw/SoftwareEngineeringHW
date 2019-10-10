@@ -28,4 +28,12 @@ $sql = "CREATE TABLE IF NOT EXISTS files(
 if (!$con->query($sql)) {
     die("创建数据表错误: " . $con->error);
 }
+$sql = "CREATE TABLE IF NOT EXISTS diarys(
+        id INT(6)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        fname VARCHAR(30) NOT NULL,
+        userid INT(6)
+        )";
+if (!$con->query($sql)) {
+    die("创建数据表错误: " . $con->error);
+}
 ?>

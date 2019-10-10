@@ -46,31 +46,22 @@ session_start();
 </head>
 
 <body>
-	<div class="body-back">
-		<div class="masthead pdng-stn1">
-			<div class="phone-box wrap push" id="home">
 				<div class="menu-notify">
 					<div class="Profile-mid">
 						<h5 class="pro-link"><a href="welcome.php">微日记</a></h5>
 					</div>
-					<div class="Profile-right">
-
-<?php
+					<div class="Profile-right"><?php
 if (isset($_SESSION['username'])) {
     $name = $_SESSION['username'];
 } else {
     $name = '游客';
 }
 echo "<a>$name , 你好！</a>";
-?>
-
-					</div>
-					<div class="clearfix">
-                    </div>
+?></div>
+					<div class="clearfix"></div>
                 </div>
-            </div>
-        </div>
-    </div>
+		   
+				
 				<!-- banner -->
 	<div id="floater">
         <div id="content">
@@ -84,10 +75,6 @@ $rows = mysqli_num_rows($result);
 $row = mysqli_fetch_assoc($result);
 if ($rows == 0) {
     echo ("<h5 class='info'>你当前没有已上传的微日记！</h5>");
-    echo("<div class='w3agile banner-bottom' style='background:white'>
-    <ul>
-        <li><a href='upload.php' class='hvr-radial-out'><i class='fa fa-upload' aria-hidden='true'></i></a><h6>立即上传!</h6></li>
-    </ul>");
 } else {
     echo ("<p>你一共有{$rows}篇</p>");
 }
