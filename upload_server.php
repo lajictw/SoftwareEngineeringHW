@@ -24,7 +24,7 @@ $error = $_FILES['file']['error'];
 //判断文件大小是否超过设置的最大上传限制
 if ($size > 4 * 1024 * 1024) {
     //
-    echo "<script>alert('文件大小超过4M大小');window.history.go(-1);</script>";
+    // echo "<script>alert('文件大小超过4M大小');window.history.go(-1);</script>";
     exit();
 }
 //phpinfo函数会以数组的形式返回关于文件路径的信息
@@ -37,7 +37,7 @@ $allow_suffix = array('doc', 'docx', 'txt', 'pdf');
 //判断上传的文件是否在允许的范围内（后缀）==>白名单判断
 if (!in_array($ext_suffix, $allow_suffix)) {
     //window.history.go(-1)表示返回上一页并刷新页面
-    echo "<script>alert('上传的文件类型只能是doc、docx、txt、pdf');window.history.go(-1);</script>";
+    // echo "<script>alert('上传的文件类型只能是doc、docx、txt、pdf');window.history.go(-1);</script>";
     exit();
 }
 //检测存放上传文件的路径是否存在，如果不存在则新建目录
@@ -47,11 +47,13 @@ if (!file_exists('uploads')) {
 //为上传的文件新起一个名字，保证更加安全
 $true_filename = date('YmdHis', time()) . rand(100, 1000);
 $new_filename = $true_filename . '.' . $ext_suffix;
+$flag=false;
 if (move_uploaded_file($temp_name, 'uploads/' . $new_filename)) {
+    $flag=true;
     echo "<script>alert('文件上传成功!');</script>";
     header("refresh:0;url=../welcome.php");
 } else {
-    echo "<script>alert('文件上传失败');</script>";
+    echo "<script>alert('文件上传失败?');</script>";
     header("refresh:0;url=../upload.php");
 }
 // echo "$ext_suffix";
@@ -61,35 +63,38 @@ if (isset($_SESSION['userid'])) {
     $userid = 0;
 }
 
-$sql = "INSERT INTO files (fname, fpath,userid)
-	VALUES ('$new_filename','uploads/$new_filename',$userid)";
-mysqli_query($con, $sql);
-include "./doc2txt.php";
-$insertname = "uploads/".$true_filename . ".txt";
-if ($ext_suffix != 'txt') 
+if($flag)
 {
-    if ($ext_suffix != 'pdf') 
-    {
-		$conv = new Convert;
-        $newdoc = "C:/Users/Zayle/WeDiary/uploads/" . $new_filename;
-        $newtxt = "C:/Users/Zayle/WeDiary/uploads/" . $true_filename . ".pdf";
-        // echo ("$newdoc\n$newtxt\n");
-        $conv->run($newdoc, $newtxt);
-        // echo("$newdoc\r\n$insertname");
-
-        if(file_exists($insertname))
+    $sql = "INSERT INTO files (fname, fpath,userid)
+    	VALUES ('$new_filename','uploads/$new_filename',$userid)";
+    mysqli_query($con, $sql);
+    include "./doc2txt.php";
+    $insertname = "uploads/".$true_filename . ".txt";
+        if ($ext_suffix != 'txt') 
         {
-            unlink($newdoc);
+            if ($ext_suffix != 'pdf') 
+            {
+        		$conv = new Convert;
+                $newdoc = "C:/Users/Zayle/WeDiary/uploads/" . $new_filename;
+                $newtxt = "C:/Users/Zayle/WeDiary/uploads/" . $true_filename . ".pdf";
+                // echo ("$newdoc\n$newtxt\n");
+                $conv->run($newdoc, $newtxt);
+                // echo("$newdoc\r\n$insertname");
+            
+                if(file_exists($insertname))
+                {
+                    unlink($newdoc);
+                }
+            }
+        	else
+        	{
+        		exec("pdftotxt $newdoc");
+        	} 
+            $sql = "INSERT INTO diarys(id,fname,userid)
+        	VALUES (null,'$insertname',$userid)";
+            if (!$con->query($sql)) {
+                die("Insert Error!");
+            }
         }
-    }
-	else
-	{
-		exec("pdftotxt $newdoc");
-	} 
-    $sql = "INSERT INTO diarys(id,fname,userid)
-	VALUES (null,'$insertname',$userid)";
-    if (!$con->query($sql)) {
-        die("Insert Error!");
-    }
 }
 $con->close();

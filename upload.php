@@ -75,7 +75,7 @@ session_start();
                     </ul>
                     <a id="showFilename">目前没有选中的文件</a>
                     <form action="upload_server.php" method="post" enctype="multipart/form-data" style="display:none">
-                        <input type="hidden" name="max_file_size" value="1048576">
+                        <input type="hidden" name="max_file_size" value="4194304">
                         <input type="file" name="file" id="uploadInput" accept=".txt,.doc,.docx,.pdf" onchange="rename(this)">
                         <input type="submit" name="上传" id="uploadSubmit">
                         <script>
