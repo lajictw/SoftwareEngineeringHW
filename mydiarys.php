@@ -89,9 +89,12 @@ if ($rows == 0) {
         <li><a href='upload.php' class='hvr-radial-out'><i class='fa fa-upload' aria-hidden='true'></i></a><h6>立即上传!</h6></li>
     </ul>");
 } else {
-    echo ("<p>你一共有{$rows}篇</p>");
+    echo ("<h5 class='info'>你一共上传了{$rows}篇微日记</h5>");
 }
-
+if($row>0)
+{
+	
+}
 ?>
                 <ul>
                 </ul>
