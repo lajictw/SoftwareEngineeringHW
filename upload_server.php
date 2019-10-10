@@ -31,6 +31,7 @@ if ($size > 4 * 1024 * 1024) {
 //[dirname]:目录路径[basename]:文件名[extension]:文件后缀名[filename]:不包含后缀的文件名
 $arr = pathinfo($filename);
 //获取文件的后缀名
+$originname=$arr['filename'];
 $ext_suffix = $arr['extension'];
 //设置允许上传文件的后缀
 $allow_suffix = array('doc', 'docx', 'txt', 'pdf');
@@ -47,14 +48,13 @@ if (!file_exists('uploads')) {
 //为上传的文件新起一个名字，保证更加安全
 $true_filename = date('YmdHis', time()) . rand(100, 1000);
 $new_filename = $true_filename . '.' . $ext_suffix;
-$flag=false;
 if (move_uploaded_file($temp_name, 'uploads/' . $new_filename)) {
-    $flag=true;
     echo "<script>alert('文件上传成功!');</script>";
     header("refresh:0;url=../welcome.php");
 } else {
     echo "<script>alert('文件上传失败?');</script>";
     header("refresh:0;url=../upload.php");
+    exit();
 }
 if (isset($_SESSION['userid'])) 
 {
@@ -64,36 +64,49 @@ else
 {
     $userid = 0;
 }
-if($flag)
-{
-    $sql = "INSERT INTO files (fname, fpath,userid)
-    	VALUES ('$new_filename','uploads/$new_filename',$userid)";
-    mysqli_query($con, $sql);
+    // $sql = "INSERT INTO files (fname, fpath,userid)
+    // 	VALUES ('$filename','uploads/$new_filename',$userid)";
+    // mysqli_query($con, $sql);
     include "./doc2txt.php";
     $insertname = "uploads/".$true_filename . ".txt";
+    $newdoc = "C:/Users/Zayle/WeDiary/uploads/" . $new_filename;
+    $newtxt = "C:/Users/Zayle/WeDiary/uploads/" . $true_filename . ".pdf";
         if ($ext_suffix != 'txt') 
         {
             if ($ext_suffix != 'pdf') 
             {
         		$conv = new Convert;
-                $newdoc = "C:/Users/Zayle/WeDiary/uploads/" . $new_filename;
-                $newtxt = "C:/Users/Zayle/WeDiary/uploads/" . $true_filename . ".pdf";
                 $conv->run($newdoc, $newtxt);
             
                 if(file_exists($insertname))
                 {
                     unlink($newdoc);
                 }
+                else 
+                {
+                    echo("<script>alert('该文件可能已损坏！')</script>");
+                    header("refresh:0;url=../upload.php");
+                    exit();
+                }
             }
         	else
         	{
-        		exec("pdftotxt $newdoc");
+                echo("$newdoc"."<br>");
+                exec("pdftotext $newdoc");
+                if(!file_exists($insertname))
+                {
+                    echo("<script>alert('该文件可能已损坏！')</script>");
+                    header("refresh:0;url=../upload.php");
+                    exit();
+                }
         	}
-            $sql = "INSERT INTO diarys(id,fname,userid)
-        	VALUES (null,'$insertname',$userid)";
+            
+        }
+        $sql = "INSERT INTO files(id,fname,fpath,ftxtpath,userid)
+            VALUES (null,'$originname','uploads/$new_filename','$insertname',$userid)";
+            // echo("$sql<br>");
             if (!$con->query($sql)) {
                 die("Insert Error!");
-            }
         }
-}
+
 $con->close();

@@ -1,5 +1,6 @@
 <?php
 session_start();
+// include("./logic/display.php");
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -55,14 +56,21 @@ session_start();
 					</div>
 					<div class="Profile-right">
 
-<?php
-if (isset($_SESSION['username'])) {
-    $name = $_SESSION['username'];
-} else {
-    $name = '游客';
-}
-echo "<a>$name , 你好！</a>";
-?>
+					<?php
+						if (isset($_SESSION['username'])) 
+						{
+							$name = $_SESSION['username'];
+							
+						}
+						else
+						$name = '游客';
+						// echo("<div style='border-right: 2% height: 100%;'>");
+						if(isset($_SESSION['username']))
+						echo("<a style='float:right' href='./logic/logout.php' class='logout'> 
+						<i class='fa fa-sign-out'></i></a>");
+						echo "<a style='float:right'>$name , 你好！</a>";
+						// echo("</div>");
+						?>
 
 					</div>
 					<div class="clearfix">
@@ -78,10 +86,10 @@ echo "<a>$name , 你好！</a>";
                     <?php
 include "./logic/connect.php";
 $userid = $_SESSION['userid'];
-$sql = "SELECT * from diarys WHERE userid =$userid";
+$sql = "SELECT * from files WHERE userid =$userid";
 $result = mysqli_query($con, $sql);
 $rows = mysqli_num_rows($result);
-$row = mysqli_fetch_assoc($result);
+// $row = mysqli_fetch_assoc($result);
 if ($rows == 0) {
     echo ("<h5 class='info'>你当前没有已上传的微日记！</h5>");
     echo("<div class='w3agile banner-bottom' style='background:white'>
@@ -89,12 +97,18 @@ if ($rows == 0) {
         <li><a href='upload.php' class='hvr-radial-out'><i class='fa fa-upload' aria-hidden='true'></i></a><h6>立即上传!</h6></li>
     </ul>");
 } else {
-    echo ("<h5 class='info'>你一共上传了{$rows}篇微日记</h5>");
+    echo ("<h5 class='info'>你一共上传了{$rows}篇微日记。</h5>");
 }
-if($row>0)
-{
-
-}
+echo("<div class='DiaryList'><ul>");
+while($row = mysqli_fetch_array($result))
+	{
+		$fname=$row['fname'];
+		// $fpath=$row['fpath'];
+		// $ftxtpath=$row['ftxtpath'];
+		$id=$row['id'];
+		echo("<li><a href='./display.php?id=$id'>$fname</a></li>");
+	}
+echo("</ul></div>");
 ?>
                 <ul>
                 </ul>

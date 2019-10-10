@@ -151,8 +151,8 @@ h5.pro-link a:hover{
 	text-decoration:none;
 }
 .Profile-right {
-    float: right;
-    width: 33.3333%;
+	float: left;
+    width: 60%;
     text-align: center;
 }
 .Profile-right i{

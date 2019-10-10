@@ -51,16 +51,23 @@ session_start();
 					<div class="Profile-mid">
 						<h5 class="pro-link"><a href="welcome.php">微日记</a></h5>
 					</div>
-					<div class="Profile-right">
+					<div class="Profile-right" >
 						<?php
 						if (isset($_SESSION['username'])) 
 						{
 							$name = $_SESSION['username'];
+							
 						}
 						else
 						$name = '游客';
-						echo "<a>$name , 你好！</a>";
+						// echo("<div style='border-right: 2% height: 100%;'>");
+						if(isset($_SESSION['username']))
+						echo("<a style='float:right' href='./logic/logout.php' class='logout'> 
+						<i class='fa fa-sign-out'></i></a>");
+						echo "<a style='float:right'>$name , 你好！</a>";
+						// echo("</div>");
 						?>
+						
 						<!-- modal -->
 
 						<!-- //modal-two -->

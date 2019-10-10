@@ -26,6 +26,12 @@ h1,h2,h3,h4,h5,h6{
     top: 64px;
     overflow: hidden;
 }
+#logout
+{
+	background: none;
+	border:none;
+	outline:none;
+}
 .frame-border{
     width: 350px;
     height: 630px;
@@ -147,8 +153,8 @@ h5.pro-link a:hover{
 	text-decoration:none;
 }
 .Profile-right {
-    float: right;
-    width: 33.3333%;
+	float: left;
+    width: 60%;
     text-align: center;
 }
 .Profile-right i{
