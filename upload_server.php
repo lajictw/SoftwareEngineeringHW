@@ -24,7 +24,7 @@ $error = $_FILES['file']['error'];
 //判断文件大小是否超过设置的最大上传限制
 if ($size > 4 * 1024 * 1024) {
     //
-    // echo "<script>alert('文件大小超过4M大小');window.history.go(-1);</script>";
+    echo "<script>alert('文件大小超过4M大小');window.history.go(-1);</script>";
     exit();
 }
 //phpinfo函数会以数组的形式返回关于文件路径的信息
@@ -36,8 +36,8 @@ $ext_suffix = $arr['extension'];
 $allow_suffix = array('doc', 'docx', 'txt', 'pdf');
 //判断上传的文件是否在允许的范围内（后缀）==>白名单判断
 if (!in_array($ext_suffix, $allow_suffix)) {
-    //window.history.go(-1)表示返回上一页并刷新页面
-    // echo "<script>alert('上传的文件类型只能是doc、docx、txt、pdf');window.history.go(-1);</script>";
+    // window.history.go(-1)表示返回上一页并刷新页面
+    echo "<script>alert('上传的文件类型只能是doc、docx、txt、pdf');window.history.go(-1);</script>";
     exit();
 }
 //检测存放上传文件的路径是否存在，如果不存在则新建目录
@@ -56,13 +56,14 @@ if (move_uploaded_file($temp_name, 'uploads/' . $new_filename)) {
     echo "<script>alert('文件上传失败?');</script>";
     header("refresh:0;url=../upload.php");
 }
-// echo "$ext_suffix";
-if (isset($_SESSION['userid'])) {
+if (isset($_SESSION['userid'])) 
+{
     $userid = $_SESSION['userid'];
-} else {
+}
+else
+{
     $userid = 0;
 }
-
 if($flag)
 {
     $sql = "INSERT INTO files (fname, fpath,userid)
@@ -77,9 +78,7 @@ if($flag)
         		$conv = new Convert;
                 $newdoc = "C:/Users/Zayle/WeDiary/uploads/" . $new_filename;
                 $newtxt = "C:/Users/Zayle/WeDiary/uploads/" . $true_filename . ".pdf";
-                // echo ("$newdoc\n$newtxt\n");
                 $conv->run($newdoc, $newtxt);
-                // echo("$newdoc\r\n$insertname");
             
                 if(file_exists($insertname))
                 {
@@ -89,7 +88,7 @@ if($flag)
         	else
         	{
         		exec("pdftotxt $newdoc");
-        	} 
+        	}
             $sql = "INSERT INTO diarys(id,fname,userid)
         	VALUES (null,'$insertname',$userid)";
             if (!$con->query($sql)) {
