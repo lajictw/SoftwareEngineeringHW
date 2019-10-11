@@ -1,8 +1,32 @@
 <?php
 session_start();
-if($_SESSION['usertype']==2)
-	{header("refresh:0;url=../teacher_welcome.php");
-	exit();}
+$id=$_GET['id'];
+include("./logic/connect.php");
+$sql="SELECT * FROM files where id=$id";
+$result=mysqli_query($con,$sql);
+$row = mysqli_fetch_array($result);
+$filename=$row['fname'];
+$txtpath=$row['ftxtpath'];
+$sql="SELECT * FROM excellent where id=$id";
+$result=mysqli_query($con,$sql);
+$rows = mysqli_num_rows($result);
+if($rows==0)
+	$flag=false;
+else
+	$flag=true;
+$_SESSION['excellentFlag']=$flag;
+// echo("{$row['ftxtpath']}");
+// showDiary($row['ftxtpath']);
+
+ function showDiary($filename ='')
+{
+    $file=fopen($filename,"r") or die("Open Error!");
+	while(!feof($file))
+	{
+		echo fgets($file)."<br>";
+	}
+	fclose($file);
+}
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -26,8 +50,10 @@ if($_SESSION['usertype']==2)
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<!--custom css-->
-	<link href="css/style_welcome.css" rel="stylesheet" type="text/css" />
+	<!-- custom css -->
+	<link href="css/display.css" rel="stylesheet" type="text/css">
+	<!-- <link href="css/common.css" rel="stylesheet" type="text/css">
+	<link href="css/login.css" rel="stylesheet" type="text/css">  -->
 	<!--component-css-->
 	<script src="travel/js/jquery-2.1.4.min.js"></script>
 	<script src="travel/js/bootstrap.min.js"></script>
@@ -39,7 +65,9 @@ if($_SESSION['usertype']==2)
 			$('.menu-link').bigSlide();
 		});
 	</script>
-	<title>欢迎使用微日记</title>
+	<title><?php
+	echo($filename);
+	?></title>
 	<!-- web-fonts -->
 	<link href='http://fonts.useso.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -54,12 +82,12 @@ if($_SESSION['usertype']==2)
 					<div class="Profile-mid">
 						<h5 class="pro-link"><a href="welcome.php">微日记</a></h5>
 					</div>
-					<div class="Profile-right" >
-						<?php
+					<div class="Profile-right">
+
+					<?php
 						if (isset($_SESSION['username'])) 
 						{
 							$name = $_SESSION['username'];
-							
 						}
 						else
 						$name = '游客';
@@ -70,27 +98,28 @@ if($_SESSION['usertype']==2)
 						echo "<a style='float:right'>$name , 你好！</a>";
 						// echo("</div>");
 						?>
-						
-						<!-- modal -->
-
-						<!-- //modal-two -->
 
 					</div>
-					<div class="clearfix"></div>
-				</div>
+					<div class="clearfix">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 				<!-- banner -->
-				<div class="details-grid">
-					<div class="details-shade">
-					</div>
-				</div>
-				<div class="w3agile banner-bottom">
-				<ul>
-				    <li><a href="upload.php" class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a><h6>上传作文</h6></li>
-					<li><a href="excellent.php" class="hvr-radial-out"><i class="fa fa-star" aria-hidden="true"></i></a><h6>优秀作文</h6></li>
-					<li><a href="mydiarys.php" class="hvr-radial-out"><i class="fa fa-list" aria-hidden="true"></i></a><h6>我的作文</h6></li>
-					<li><a href="change.php" class="hvr-radial-out"><i class="fa fa-user" aria-hidden="true"></i></a><h6>修改资料</h6></li>
-				</ul>
+	<div id="floater">
+        <div id="content">
+            <div id="mid-content" >
+			
+				<?php
+					showDiary($txtpath);
+				?>
+			
+			<div class="starBtn">
+				<h6><?php if($flag)	echo("取消优秀作文"); else echo("设为优秀作文");?></h6><a href="setExcellent.php?id=<?php echo"$id"?>"><i class="fa fa-star" aria-hidden="true"></i></a>
 			</div>
 			</div>
+			
 		</div>
+	</div>
 </body>

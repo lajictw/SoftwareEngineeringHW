@@ -6,7 +6,24 @@ h2,
 h3 {
 	margin: 0;
 }
-
+.starBtn h6
+{
+	float: right;
+	font-size: 1.3em;
+}
+.starBtn a
+{
+	float: right;
+}
+.starBtn i
+{
+	background: white;
+	font-size: 1.3em;
+}
+.starBtn
+{
+	height: 60px;
+}
 #floater {
 	margin-top: 0 auto;
     float: left;

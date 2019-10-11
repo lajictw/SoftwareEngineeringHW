@@ -1,10 +1,6 @@
 <?php
 include("./logic/connect.php");
 session_start();
-// if(isset($_POST['flag']))
-// 	if($_POST['flag']=='2')
-// 		$_SESSION['usertype']=2;
-// $usertype=$_SESSION['usertype'];
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -43,11 +39,11 @@ session_start();
 				</div>
 			</div>
 			
-			<form name="signup" action="logic/signup.php" method="post">
+			<form name="signup" action="logic/signup.php?type=2" method="post">
 				<div class="input_signup active">
 				<div class="userhint">
-				<a>你当前要注册的是学生账号</a>
-				</div>
+				<a>你当前要注册的是教师账号</a>
+			</div>
 					<input class="input" id="user_name" name="name" type="text" aria-label="用户名（包含字母／数字／下划线" placeholder="用户名">
 					<div class="hint">请填写符合格式的用户名</div>
 					<input class="input" id="user_email" name="email"  type="text" aria-label="邮箱" placeholder="邮箱">
@@ -58,9 +54,9 @@ session_start();
 					<input class="input" id="repassword" type="password" aria-label="密码" placeholder="再次输入密码">
 					<div class="hint">请再次输入密码</div>
 					<input type="submit" id="submit" class="button" name="submit" value="注册">
-					<div class="usertype">
-						<a href="teacher_Signup.php">教师注册入口</a>
-					</div> 
+					<!-- <div class="usertype">
+						<a>你当前要注册的是教师账号</a>
+					</div>  -->
 				</div>
 			</form>
 			<form name="signin" action="logic/signin.php" method="post">

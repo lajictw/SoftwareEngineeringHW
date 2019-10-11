@@ -1,8 +1,5 @@
 <?php
 session_start();
-if($_SESSION['usertype']==2)
-	{header("refresh:0;url=../teacher_welcome.php");
-	exit();}
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">

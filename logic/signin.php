@@ -13,12 +13,19 @@ if ($name && $passowrd) { //如果用户名和密码都不为空
     $rows = mysqli_num_rows($result); //返回一个数值
     $row = mysqli_fetch_assoc($result);
     $userid=$row['id'];
+    $usertype=$row['usertype'];
     if ($rows > 0) {
         session_start();
+        $_SESSION['usertype']=$usertype;
         $_SESSION['username'] = $name;
         $_SESSION['userid']=$userid;
         echo "<script>alert('登陆成功!')</script>";
+        if($_SESSION['usertype']==1)
         header("refresh:0;url=../welcome.php");
+        else if($_SESSION['usertype']==2)
+        header("refresh:0;url=../teacher_welcome.php");
+        else if($_SESSION['usertype']==0)
+        header("refresh:0;url=../admin.php");
     } else {
         echo "<script>alert('用户名或密码错误！')</script>";
         echo "

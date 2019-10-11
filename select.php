@@ -1,8 +1,6 @@
 <?php
 session_start();
-if($_SESSION['usertype']==2)
-	{header("refresh:0;url=../teacher_welcome.php");
-	exit();}
+// include("./logic/display.php");
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -26,8 +24,10 @@ if($_SESSION['usertype']==2)
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<!--custom css-->
-	<link href="css/style_welcome.css" rel="stylesheet" type="text/css" />
+	<!-- custom css -->
+	<link href="css/mydiarys.css" rel="stylesheet" type="text/css">
+	<!-- <link href="css/common.css" rel="stylesheet" type="text/css">
+	<link href="css/login.css" rel="stylesheet" type="text/css">  -->
 	<!--component-css-->
 	<script src="travel/js/jquery-2.1.4.min.js"></script>
 	<script src="travel/js/bootstrap.min.js"></script>
@@ -54,8 +54,9 @@ if($_SESSION['usertype']==2)
 					<div class="Profile-mid">
 						<h5 class="pro-link"><a href="welcome.php">微日记</a></h5>
 					</div>
-					<div class="Profile-right" >
-						<?php
+					<div class="Profile-right">
+
+					<?php
 						if (isset($_SESSION['username'])) 
 						{
 							$name = $_SESSION['username'];
@@ -70,27 +71,65 @@ if($_SESSION['usertype']==2)
 						echo "<a style='float:right'>$name , 你好！</a>";
 						// echo("</div>");
 						?>
-						
-						<!-- modal -->
-
-						<!-- //modal-two -->
 
 					</div>
-					<div class="clearfix"></div>
-				</div>
+					<div class="clearfix">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 				<!-- banner -->
-				<div class="details-grid">
-					<div class="details-shade">
-					</div>
-				</div>
-				<div class="w3agile banner-bottom">
-				<ul>
-				    <li><a href="upload.php" class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a><h6>上传作文</h6></li>
-					<li><a href="excellent.php" class="hvr-radial-out"><i class="fa fa-star" aria-hidden="true"></i></a><h6>优秀作文</h6></li>
-					<li><a href="mydiarys.php" class="hvr-radial-out"><i class="fa fa-list" aria-hidden="true"></i></a><h6>我的作文</h6></li>
-					<li><a href="change.php" class="hvr-radial-out"><i class="fa fa-user" aria-hidden="true"></i></a><h6>修改资料</h6></li>
-				</ul>
-			</div>
-			</div>
-		</div>
+	<div id="floater">
+        <div id="content">
+            <div id="mid-content" >
+                    <?php
+include "./logic/connect.php";
+$userid = $_SESSION['userid'];
+$sql = "SELECT * from files";
+$result = mysqli_query($con, $sql);
+$rows = mysqli_num_rows($result);
+// $row = mysqli_fetch_assoc($result);
+if ($rows == 0) {
+    echo ("<h5 class='info'>当前没有已上传的微日记！</h5>");
+} else {
+    echo ("<h5 class='info'>学生们一共上传了{$rows}篇微日记。</h5>");
+}
+echo("<div class='DiaryList'><ul>");
+while($row = mysqli_fetch_array($result))
+	{
+		$fname=$row['fname'];
+		// $fpath=$row['fpath'];
+		// $ftxtpath=$row['ftxtpath'];
+		$id=$row['id'];
+		echo("<li>
+			<a href='./teacher_Display.php?id=$id'>$fname</a>
+		");
+		$tempsql="SELECT * FROM excellent where id=$id";
+		$tempresult=mysqli_query($con,$tempsql);
+		$temprows = mysqli_num_rows($tempresult);
+		if($temprows!=0)
+		{echo
+		"
+		<div style='float:right'>
+		<i class='fa fa-star' id='star' style='color:blue'></i></div>
+		";}
+		echo("</li>");
+	}
+echo("</ul></div>");
+?>
+			<!-- <script>
+			$("#teaBtn").click(
+                                	function () {
+										document.getElementById("student").style.display="none";
+										document.getElementById("teacher").style.display="unset";
+										document.getElementById("signForm").elements['flag'].value="2";
+                                }
+							);
+			</script> -->
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>

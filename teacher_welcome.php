@@ -1,8 +1,5 @@
 <?php
 session_start();
-if($_SESSION['usertype']==2)
-	{header("refresh:0;url=../teacher_welcome.php");
-	exit();}
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -85,9 +82,7 @@ if($_SESSION['usertype']==2)
 				</div>
 				<div class="w3agile banner-bottom">
 				<ul>
-				    <li><a href="upload.php" class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a><h6>上传作文</h6></li>
-					<li><a href="excellent.php" class="hvr-radial-out"><i class="fa fa-star" aria-hidden="true"></i></a><h6>优秀作文</h6></li>
-					<li><a href="mydiarys.php" class="hvr-radial-out"><i class="fa fa-list" aria-hidden="true"></i></a><h6>我的作文</h6></li>
+					<li><a href="select.php" class="hvr-radial-out"><i class="fa fa-star" aria-hidden="true"></i></a><h6>选择优秀作文</h6></li>
 					<li><a href="change.php" class="hvr-radial-out"><i class="fa fa-user" aria-hidden="true"></i></a><h6>修改资料</h6></li>
 				</ul>
 			</div>

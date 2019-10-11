@@ -1,6 +1,10 @@
 <?php
 header("Content-Type: text/html; charset=utf8");
-
+session_start();
+if(isset($_GET['type']))
+    $usertype=$_GET['type'];
+else
+$usertype=1;
 if (!isset($_POST['submit'])) {
     exit("无权限调用！");
 } //判断是否有submit操作
@@ -26,13 +30,12 @@ if ($flag) {
     mysqli_close($con);
     exit();
 }
-$newuser = "insert into users(id,username,password,email) values (null,'$name','$password','$email')"; //向数据库插入表单传来的值的sql
+$newuser = "insert into users(id,username,password,email,usertype) values (null,'$name','$password','$email',$usertype)"; //向数据库插入表单传来的值的sql
 $result = mysqli_query($con, $newuser);
 
 if (!$result) {
     die('Error: ' . $con->error); //如果sql执行失败输出错误
 } else {
-    session_start();
     $_SESSION['username'] = $name;
     header("refresh:0;url=../signinorup.php");//如果成功跳转至welcome.html页面
     echo "<script>alert('注册成功！')</script>";

@@ -1,3 +1,8 @@
+<?php
+session_start();
+// if(!isset($_SESSION['usertype']))
+// $_SESSION['usertype']=1;
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <!-- Head -->
@@ -46,15 +51,24 @@
 				<div class="wrap-content">
 					<div class="profile-menu text-center">
 						<img class="border-effect" src="images/pen.png" alt=" ">
-						<h3>MENU</h3>
+						<h3>微日记</h3>
 
 						<div class="pro-menu">
 							<div class="logo">
-								<li><a class=" link link--yaku  active" href="travel/main.html"><span>H</span><span>o</span><span>m</span><span>e</span></a></li>
-								<li><a class=" link link--yaku" href="travel/about.html"><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span></a></li>
-								<li><a class=" link link--yaku" href="travel/short-codes.html"><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span></a></li>
-								<li><a class=" link link--yaku" href="travel/destination.html"><span>D</span><span>e</span><span>s</span><span>t</span><span>i</span><span>n</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span></a></li>
-								<li><a class=" link link--yaku" href="travel/contact.html"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></a></li>
+								<li><a class=" link link--yaku  active" href="index.php"><span>主</span><span>页</span></a></li>
+								<li><a class=" link link--yaku" href="signinorup.php"><span>登</span><span>录</span></a></li>
+								<li><button id="teaBtn" style="border:none;outline:none;background:none;">
+									<!-- <a class=" link link--yaku">
+										<span>我</span><span>是</span><span>老</span><span>师</span></span>  </span></span>
+										<i class="fa fa-check-square-o" id="teacher" aria-hidden="true" style='display:none'></i>
+									</a></button></li>
+									<li><button id="stuBtn" style="border:none;outline:none;background:none;">
+									<a class=" link link--yaku">
+										<span>我</span><span>是</span><span>学</span><span>生</span></span>  </span></span>
+										<i class="fa fa-check-square-o" id="student" aria-hidden="true" style='display:unset'></i>
+									</a></button></li> -->
+								<!-- <p style="display:none" id="flag">1</p> -->
+								<!-- <button id="test">test</button> -->
 							</div>
 
 
@@ -71,9 +85,47 @@
 						<h5 class="pro-link"><a href="index.php">微日记</a></h5>
 					</div>
 					<div class="Profile-right">
-						<a href="signinorup.php" class="sign-in or sign-up"> 
-							<i class="fa fa-user"></i>
-						</a>
+				<!-- <form name="sign" action="./signinorup.php" method="post" id="signForm" style="display:none" >
+					<input class="input" id="flag" type="text" name="flag" value="$teacher">
+					<input type="submit" id="signSubmit" class="button" name="sign">
+				</form> -->
+							 <!-- <button id="signBtn" style="border:none;outline:none;background:none;">-->
+						<a  href='signinorup.php' class="sign-in or sign-up"> 
+						<i class='fa fa-user'></i></a>
+						<!--</button> 
+						 <script>
+							var flag=document.getElementById("signForm").elements['flag'].value;
+							if(flag=="2")
+							{
+								document.getElementById("student").style.display="none";
+										document.getElementById("teacher").style.display="unset";
+							}
+							else 
+							{
+								document.getElementById("student").style.display="unset";
+										document.getElementById("teacher").style.display="none";
+							}
+							$("#teaBtn").click(
+                                	function () {
+										document.getElementById("student").style.display="none";
+										document.getElementById("teacher").style.display="unset";
+										document.getElementById("signForm").elements['flag'].value="2";
+                                }
+							);
+							$("#stuBtn").click(
+                                	function () {
+										document.getElementById("student").style.display="unset";
+										document.getElementById("teacher").style.display="none";
+										document.getElementById("signForm").elements['flag'].value="1";
+                                }
+                            );
+							
+							$("#signBtn").click(
+                                function() {
+                                    $("#signSubmit").click();
+                                }
+                            );
+						</script> -->
 						<!-- modal -->
 						<div id="small-dialog" class="mfp-hide">
 							<div class="login-modal">
