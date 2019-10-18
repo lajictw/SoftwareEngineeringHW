@@ -15,8 +15,6 @@ if($rows==0)
 else
 	$flag=true;
 $_SESSION['excellentFlag']=$flag;
-// echo("{$row['ftxtpath']}");
-// showDiary($row['ftxtpath']);
 
  function showDiary($filename ='')
 {
