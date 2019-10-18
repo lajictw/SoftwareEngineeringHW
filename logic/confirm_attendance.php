@@ -16,6 +16,7 @@ include('connect.php');//链接数据库
         mysqli_query($con,"UPDATE info SET first_attendance = second_attendance+1 WHERE course_id = $id AND isTeacher = 1");
     }
     
+    //对于签到的设置
     $_SESSION['attendance'] = 1;
     header("refresh:0;url=../student/index.php");
     echo"<script>alert('已签到！')</script>";

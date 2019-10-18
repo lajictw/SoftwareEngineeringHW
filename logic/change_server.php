@@ -12,11 +12,13 @@ $sql = "select * from users where id = $userid";
 $result = mysqli_query($con, $sql);
 $rows = mysqli_num_rows($result);
 $row = mysqli_fetch_assoc($result);
+//对于越权操作的控制
 if ($rows <= 0) {
     echo "<script>alert('请先登录！')</script>";
     header("refresh:0;url=./index.php");
     mysqli_close($con);
 }
+//忘记密码的处理
 $newname = $_POST['name']; //post获取表单里的name
 $newpassword = $_POST['password']; //post获取表单里的password
 $newemail = $_POST['email'];
