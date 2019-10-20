@@ -100,13 +100,27 @@ if ($rows == 0) {
     echo ("<h5 class='info'>老师一共展示了{$rows}篇优秀微日记。</h5>");
 }
 echo("<div class='DiaryList'><ul>");
+
 while($row = mysqli_fetch_array($result))
 	{
-		$fname=$row['fname'];
+		$id=$row['id'];
+		$tempsql="SELECT * FROM files where id=$id";
+		$tempresult = mysqli_query($con, $tempsql);
+		$temprows = mysqli_num_rows($tempresult);
+		if($temprows>0)
+		$temprow = mysqli_fetch_array($tempresult);
+		{
+			$fname=$temprow['fname'];
+			$score=$temprow['score'];
 		// $fpath=$row['fpath'];
 		// $ftxtpath=$row['ftxtpath'];
-		$id=$row['id'];
-		echo("<li><a href='./display.php?id=$id'>$fname</a></li>");
+			echo("<li><a href='./display.php?id=$id'>$fname</a>");
+			echo
+		"<div style='float:right'>";
+		if($score==0)
+		echo("<a style='color:black;text-decoration:none'>未评分</a>");
+		else echo("<a style='color:black;text-decoration:none'>{$score}分</a>");
+		echo("</div></li>");}
 	}
 echo("</ul></div>");
 ?>

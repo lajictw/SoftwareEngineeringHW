@@ -31,7 +31,7 @@
     $username=$row['username'];
     if(!$flag)
     {
-        $sql="INSERT INTO excellent(id,fname,fpath,ftxtpath,userid) VALUE ($id,'$fname','$fpath','$ftxtpath',$userid)";
+        $sql="INSERT INTO excellent(id) VALUE ($id)";
         // $result=mysqli_query($con,$sql);
         if (!$con->query($sql)) 
             die($con->error);

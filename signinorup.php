@@ -52,7 +52,6 @@ session_start();
 					<div class="hint">请填写符合格式的用户名</div>
 					<input class="input" id="user_email" name="email"  type="text" aria-label="邮箱" placeholder="邮箱">
 					<div class="hint">请填写邮箱</div>
-					<!-- <div class="hint">请选择账号类型</div> -->
 					<input class="input" id="password" type="password" name="password" aria-label="密码" placeholder="密码（不少于 6 位）">
 					<div class="hint">请填写符合格式的密码</div>
 					<input class="input" id="repassword" type="password" aria-label="密码" placeholder="再次输入密码">
@@ -77,7 +76,6 @@ session_start();
 
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/form.js"></script>
-		<script type="text/javascript" src="js/config.js"></script>
 		<!-- <script type="text/javascript" src="js/login_ajax.js"></script> -->
 </body>
 </html>

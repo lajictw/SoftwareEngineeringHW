@@ -91,7 +91,7 @@ else
             }
         	else
         	{
-                echo("$newdoc"."<br>");
+                // echo("$newdoc"."<br>");
                 exec("pdftotext $newdoc");
                 if(!file_exists($insertname))
                 {
@@ -102,8 +102,8 @@ else
         	}
             
         }
-        $sql = "INSERT INTO files(id,fname,fpath,ftxtpath,userid)
-            VALUES (null,'$originname','uploads/$new_filename','$insertname',$userid)";
+        $sql = "INSERT INTO files(id,fname,fpath,ftxtpath,userid,score)
+            VALUES (null,'$originname','uploads/$new_filename','$insertname',$userid,0)";
             // echo("$sql<br>");
             if (!$con->query($sql)) {
                 die("Insert Error!");

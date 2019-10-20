@@ -1,3 +1,2 @@
 <?php
-$com = new COM('word.application'); 
-echo $com;
+include("index.php");

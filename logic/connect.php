@@ -25,17 +25,14 @@ $sql = "CREATE TABLE IF NOT EXISTS files(
         fname VARCHAR(50) NOT NULL,
         fpath VARCHAR(50),
         ftxtpath VARCHAR(50),
-        userid INT(6)
+        userid INT(6),
+        score INT(6)
         ) default charset=utf8; ";
 if (!$con->query($sql)) {
     die("创建数据表错误: " . $con->error);
 }
 $sql = "CREATE TABLE IF NOT EXISTS excellent(
-        id INT(6),
-        fname VARCHAR(50) NOT NULL,
-        fpath VARCHAR(50),
-        ftxtpath VARCHAR(50),
-        userid INT(6)
+        id INT(6)
         ) default charset=utf8; ";
 if (!$con->query($sql)) {
     die("创建数据表错误: " . $con->error);

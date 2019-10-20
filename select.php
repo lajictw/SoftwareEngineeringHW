@@ -102,6 +102,7 @@ while($row = mysqli_fetch_array($result))
 		// $fpath=$row['fpath'];
 		// $ftxtpath=$row['ftxtpath'];
 		$id=$row['id'];
+		$score=$row['score'];
 		echo("<li>
 			<a href='./teacher_Display.php?id=$id'>$fname</a>
 		");
@@ -109,11 +110,16 @@ while($row = mysqli_fetch_array($result))
 		$tempresult=mysqli_query($con,$tempsql);
 		$temprows = mysqli_num_rows($tempresult);
 		if($temprows!=0)
-		{echo
+		{
+		echo
 		"
 		<div style='float:right'>
-		<i class='fa fa-star' id='star' style='color:blue'></i></div>
+		<i class='fa fa-star' id='star' style='color:blue'></i>
 		";}
+		if($score==0)
+		echo("<a style='color:black;text-decoration:none'>未评分</a>");
+		else echo("<a style='color:black;text-decoration:none'>{$score}分</a>");
+		echo("</div>");
 		echo("</li>");
 	}
 echo("</ul></div>");

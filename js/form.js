@@ -61,7 +61,7 @@
             case "info_phone":
             case "send_to_phone":
             case "send_from_phone":
-                flag=/^((\(\d{2,3}\))|(\d{3}\-))?1[3,8,5]{1}\d{9}$/.test(value);
+                flag=/^((\(\d{2,3}\))|(\d{3}\-))?[3,8,5]{1}\d{9}$/.test(value);
                 id="phone";
                 break;
             case "id_card":
@@ -91,6 +91,11 @@
     index=0;
     for(var j=0;j<inputs.length;j++){
         (function(i){
+            // if(inputs[i]=='')
+            //     index=1;
+            hint[i].style.visibility="visible";
+            id=inputs[i].id;
+            regValue(id,i);
             regEvent(inputs[i],"focus",function(){
                 hint[i].style.visibility="visible";
                 id=inputs[i].id;
@@ -102,11 +107,11 @@
     }
     regEvent(document.getElementById("submit"),"click",function(e){
         if(index!==0){
-            alert(index)
             e.preventDefault();
             alert("您的输入有误，请检查并重新输入！");
             return false;
         }  
+        // alert(index);
     });  
     regEvent(document.getElementById("button"),"click",function(e){
         if(index!==0){
