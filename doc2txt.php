@@ -38,7 +38,6 @@ class Convert{
         }
         $input = "file:///" . str_replace("\\", "/", $input);
         $newoutput = "file:///" . str_replace("\\", "/", $output);
-        // exec("pdftotext $postname");
         $this->transform($input, $newoutput);
         exec("pdftotext $output");
         return $output;

@@ -58,17 +58,6 @@ session_start();
 								<li><a class=" link link--yaku  active" href="index.php"><span>主</span><span>页</span></a></li>
 								<li><a class=" link link--yaku" href="signinorup.php"><span>登</span><span>录</span></a></li>
 								<li><button id="teaBtn" style="border:none;outline:none;background:none;">
-									<!-- <a class=" link link--yaku">
-										<span>我</span><span>是</span><span>老</span><span>师</span></span>  </span></span>
-										<i class="fa fa-check-square-o" id="teacher" aria-hidden="true" style='display:none'></i>
-									</a></button></li>
-									<li><button id="stuBtn" style="border:none;outline:none;background:none;">
-									<a class=" link link--yaku">
-										<span>我</span><span>是</span><span>学</span><span>生</span></span>  </span></span>
-										<i class="fa fa-check-square-o" id="student" aria-hidden="true" style='display:unset'></i>
-									</a></button></li> -->
-								<!-- <p style="display:none" id="flag">1</p> -->
-								<!-- <button id="test">test</button> -->
 							</div>
 
 
@@ -85,48 +74,8 @@ session_start();
 						<h5 class="pro-link"><a href="index.php">微日记</a></h5>
 					</div>
 					<div class="Profile-right">
-				<!-- <form name="sign" action="./signinorup.php" method="post" id="signForm" style="display:none" >
-					<input class="input" id="flag" type="text" name="flag" value="$teacher">
-					<input type="submit" id="signSubmit" class="button" name="sign">
-				</form> -->
-							 <!-- <button id="signBtn" style="border:none;outline:none;background:none;">-->
 						<a  href='signinorup.php' class="sign-in or sign-up"> 
 						<i class='fa fa-user'></i></a>
-						<!--</button> 
-						 <script>
-							var flag=document.getElementById("signForm").elements['flag'].value;
-							if(flag=="2")
-							{
-								document.getElementById("student").style.display="none";
-										document.getElementById("teacher").style.display="unset";
-							}
-							else 
-							{
-								document.getElementById("student").style.display="unset";
-										document.getElementById("teacher").style.display="none";
-							}
-							$("#teaBtn").click(
-                                	function () {
-										document.getElementById("student").style.display="none";
-										document.getElementById("teacher").style.display="unset";
-										document.getElementById("signForm").elements['flag'].value="2";
-                                }
-							);
-							$("#stuBtn").click(
-                                	function () {
-										document.getElementById("student").style.display="unset";
-										document.getElementById("teacher").style.display="none";
-										document.getElementById("signForm").elements['flag'].value="1";
-                                }
-                            );
-							
-							$("#signBtn").click(
-                                function() {
-                                    $("#signSubmit").click();
-                                }
-                            );
-						</script> -->
-						<!-- modal -->
 						<div id="small-dialog" class="mfp-hide">
 							<div class="login-modal">
 								<div class="booking-info">
@@ -143,7 +92,6 @@ session_start();
 								</div>
 							</div>
 						</div>
-						<!-- //modal-two -->
 
 					</div>
 					<div class="clearfix"></div>

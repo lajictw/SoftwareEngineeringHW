@@ -29,10 +29,6 @@ include("./logic/connect.php");
       <a href="#" class="preview" onclick="handlePreviewClick()">预览</a>
     </div>
   </header>
-  <!-- <section class="cover-wrapper">
-    <div class="cover"><img src=""></div>
-    <input type="file" accept="image/*" style="display: none">
-  </section> -->
   <!--标题-->
   <section class="title-wrapper border-bm" style="margin-top:44px">
     <div class="item placeholder">标题<span>（不超过30个字）</span></div>

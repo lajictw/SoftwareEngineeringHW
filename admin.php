@@ -60,18 +60,11 @@ session_start();
 						}
 						else
 						$name = '游客';
-						// echo("<div style='border-right: 2% height: 100%;'>");
 						if(isset($_SESSION['username']))
 						echo("<a style='float:right' href='./logic/logout.php' class='logout'> 
 						<i class='fa fa-sign-out'></i></a>");
 						echo "<a style='float:right'>$name , 你好！</a>";
-						// echo("</div>");
 						?>
-						
-						<!-- modal -->
-
-						<!-- //modal-two -->
-
 					</div>
 					<div class="clearfix"></div>
 				</div>

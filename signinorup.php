@@ -76,6 +76,5 @@ session_start();
 
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/form.js"></script>
-		<!-- <script type="text/javascript" src="js/login_ajax.js"></script> -->
 </body>
 </html>

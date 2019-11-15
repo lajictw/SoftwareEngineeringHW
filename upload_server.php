@@ -64,9 +64,6 @@ else
 {
     $userid = 0;
 }
-    // $sql = "INSERT INTO files (fname, fpath,userid)
-    // 	VALUES ('$filename','uploads/$new_filename',$userid)";
-    // mysqli_query($con, $sql);
     include "./doc2txt.php";
     $insertname = "uploads/".$true_filename . ".txt";
     $newdoc = "C:/Users/Zayle/WeDiary/uploads/" . $new_filename;
@@ -91,7 +88,6 @@ else
             }
         	else
         	{
-                // echo("$newdoc"."<br>");
                 exec("pdftotext $newdoc");
                 if(!file_exists($insertname))
                 {

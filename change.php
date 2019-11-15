@@ -62,17 +62,11 @@ session_start();
 						}
 						else
 						$name = '游客';
-						// echo("<div style='border-right: 2% height: 100%;'>");
 						if(isset($_SESSION['username']))
 						echo("<a style='float:right' href='./logic/logout.php' class='logout'> 
 						<i class='fa fa-sign-out'></i></a>");
 						echo "<a style='float:right'>$name , 你好！</a>";
-						// echo("</div>");
 						?>
-						<!-- modal -->
-
-						<!-- //modal-two -->
-
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -93,8 +87,6 @@ include "./logic/connect.php";
 					<div class="hint">请填写符合格式的用户名</div>
 					<input class="input" id="user_email" name="email"  type="text" aria-label="邮箱" placeholder="新邮箱">
 					<div class="hint">请填写邮箱</div>
-					<!-- <input class="input" id="phone" type="text" class="account" aria-label="手机号（仅支持中国大陆）" placeholder="手机号（仅支持中国大陆）">
-					<div class="hint">请填写手机号</div> -->
 					<input class="input" id="password" type="password" name="password" aria-label="密码" placeholder="新密码（不少于 6 位）">
 					<div class="hint">请填写符合格式的密码</div>
 					<input class="input" id="repassword" type="password" aria-label="密码" placeholder="再次输入密码">

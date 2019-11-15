@@ -14,7 +14,6 @@ if(!isset($_POST['title']))
 $title=$_POST['title'];
 $userid=$_POST['userid'];
 $text=$_POST['text'];
-// echo $title;
 $true_filename = date('YmdHis', time()) . rand(100, 1000).".txt";
 $file=fopen("uploads/$true_filename","w");
 fwrite($file,$text);

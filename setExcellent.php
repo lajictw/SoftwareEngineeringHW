@@ -32,7 +32,6 @@
     if(!$flag)
     {
         $sql="INSERT INTO excellent(id) VALUE ($id)";
-        // $result=mysqli_query($con,$sql);
         if (!$con->query($sql)) 
             die($con->error);
         echo("<script>alert('已将学生{$username}的微日记《{$fname}》设为精选！')</script>");

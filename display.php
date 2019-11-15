@@ -7,9 +7,6 @@ $result=mysqli_query($con,$sql);
 $row = mysqli_fetch_array($result);
 $filename=$row['fname'];
 $txtpath=$row['ftxtpath'];
-// echo("{$row['ftxtpath']}");
-// showDiary($row['ftxtpath']);
-
  function showDiary($filename ='')
 {
     $file=fopen($filename,"r") or die("Open Error!");
@@ -44,8 +41,6 @@ $txtpath=$row['ftxtpath'];
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<!-- custom css -->
 	<link href="css/display.css" rel="stylesheet" type="text/css">
-	<!-- <link href="css/common.css" rel="stylesheet" type="text/css">
-	<link href="css/login.css" rel="stylesheet" type="text/css">  -->
 	<!--component-css-->
 	<script src="travel/js/jquery-2.1.4.min.js"></script>
 	<script src="travel/js/bootstrap.min.js"></script>
@@ -84,7 +79,6 @@ $txtpath=$row['ftxtpath'];
 						}
 						else
 						$name = '游客';
-						// echo("<div style='border-right: 2% height: 100%;'>");
 						if(isset($_SESSION['username']))
 						echo("<a style='float:right' href='./logic/logout.php' class='logout'> 
 						<i class='fa fa-sign-out'></i></a>");

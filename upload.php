@@ -61,19 +61,16 @@ session_start();
 						}
 						else
 						$name = '游客';
-						// echo("<div style='border-right: 2% height: 100%;'>");
 						if(isset($_SESSION['username']))
 						echo("<a style='float:right' href='./logic/logout.php' class='logout'> 
 						<i class='fa fa-sign-out'></i></a>");
 						echo "<a style='float:right'>$name , 你好！</a>";
-						// echo("</div>");
 						?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="w3agile banner-bottom">
                     <ul>
-                        <!-- <style>button#uploadBtn{border: none;box-shadow: 0;}</style> -->
                         <li id="editNow"><a href="edit.php" class="hvr-radial-out"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             <h6>网页编辑</h6>
                         </li>
@@ -97,8 +94,6 @@ session_start();
                             );
 
                             function rename(o) {
-                                // alert('test');
-                                // var tempname = o[0].value;
                                 var fileobj = o.files[0];
                                 if (typeof(fileobj) == "undefined") {
                                     alert("请选择要上传的文件。");
@@ -120,7 +115,6 @@ session_start();
                         </script>
                     </form>
                 </div>
-                <!-- banner -->
             </div>
         </div>
 </body>

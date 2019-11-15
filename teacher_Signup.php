@@ -20,10 +20,6 @@ session_start();
 	<link rel="stylesheet" href="css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/login.css">
-	
-	<!-- <link rel="stylesheet" herf="button_test.css"> -->
-	<!-- default css files -->
-
 	<!--web font-->
 	<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
@@ -54,9 +50,6 @@ session_start();
 					<input class="input" id="repassword" type="password" aria-label="密码" placeholder="再次输入密码">
 					<div class="hint">请再次输入密码</div>
 					<input type="submit" id="submit" class="button" name="submit" value="注册">
-					<!-- <div class="usertype">
-						<a>你当前要注册的是教师账号</a>
-					</div>  -->
 				</div>
 			</form>
 			<form name="signin" action="logic/signin.php" method="post">

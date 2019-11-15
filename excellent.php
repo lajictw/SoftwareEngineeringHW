@@ -1,6 +1,5 @@
 <?php
 session_start();
-// include("./logic/display.php");
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -26,8 +25,6 @@ session_start();
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<!-- custom css -->
 	<link href="css/mydiarys.css" rel="stylesheet" type="text/css">
-	<!-- <link href="css/common.css" rel="stylesheet" type="text/css">
-	<link href="css/login.css" rel="stylesheet" type="text/css">  -->
 	<!--component-css-->
 	<script src="travel/js/jquery-2.1.4.min.js"></script>
 	<script src="travel/js/bootstrap.min.js"></script>
@@ -64,12 +61,10 @@ session_start();
 						}
 						else
 						$name = '游客';
-						// echo("<div style='border-right: 2% height: 100%;'>");
 						if(isset($_SESSION['username']))
 						echo("<a style='float:right' href='./logic/logout.php' class='logout'> 
 						<i class='fa fa-sign-out'></i></a>");
 						echo "<a style='float:right'>$name , 你好！</a>";
-						// echo("</div>");
 						?>
 
 					</div>
@@ -89,13 +84,8 @@ $userid = $_SESSION['userid'];
 $sql = "SELECT * from excellent";
 $result = mysqli_query($con, $sql);
 $rows = mysqli_num_rows($result);
-// $row = mysqli_fetch_assoc($result);
 if ($rows == 0) {
     echo ("<h5 class='info'>当前没有优秀微日记！</h5>");
-    // echo("<div class='w3agile banner-bottom' style='background:white'>
-    // <ul>
-    //     <li><a href='upload.php' class='hvr-radial-out'><i class='fa fa-upload' aria-hidden='true'></i></a><h6>立即上传!</h6></li>
-    // </ul>");
 } else {
     echo ("<h5 class='info'>老师一共展示了{$rows}篇优秀微日记。</h5>");
 }
@@ -112,8 +102,6 @@ while($row = mysqli_fetch_array($result))
 		{
 			$fname=$temprow['fname'];
 			$score=$temprow['score'];
-		// $fpath=$row['fpath'];
-		// $ftxtpath=$row['ftxtpath'];
 			echo("<li><a href='./display.php?id=$id'>$fname</a>");
 			echo
 		"<div style='float:right'>";
