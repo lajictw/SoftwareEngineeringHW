@@ -14,12 +14,14 @@ if ($name && $passowrd) { //如果用户名和密码都不为空
     $row = mysqli_fetch_assoc($result);
     $userid=$row['id'];
     $usertype=$row['usertype'];
+    //判断输入的用户名或者密码是否正确
     if ($rows > 0) {
         session_start();
         $_SESSION['usertype']=$usertype;
         $_SESSION['username'] = $name;
         $_SESSION['userid']=$userid;
         echo "<script>alert('登陆成功!')</script>";
+        //判断usertype来确定为何种用户，定义学生用户usertype为1，教师用户为2，管理员用户为0
         if($_SESSION['usertype']==1)
         header("refresh:0;url=../welcome.php");
         else if($_SESSION['usertype']==2)

@@ -56,6 +56,7 @@ if($_SESSION['usertype']==2)
 					</div>
 					<div class="Profile-right" >
 						<?php
+						//username显示
 						if (isset($_SESSION['username'])) 
 						{
 							$name = $_SESSION['username'];

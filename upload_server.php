@@ -48,6 +48,7 @@ if (!file_exists('uploads')) {
 //为上传的文件新起一个名字，保证更加安全
 $true_filename = date('YmdHis', time()) . rand(100, 1000);
 $new_filename = $true_filename . '.' . $ext_suffix;
+//判断文件是否成功
 if (move_uploaded_file($temp_name, 'uploads/' . $new_filename)) {
     echo "<script>alert('文件上传成功!');</script>";
     header("refresh:0;url=../welcome.php");

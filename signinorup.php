@@ -1,4 +1,5 @@
 <?php
+//本php文档用于执行选择“登录或注册”的功能
 include("./logic/connect.php");
 session_start();
 // if(isset($_POST['flag']))
@@ -44,8 +45,10 @@ session_start();
 			</div>
 			
 			<form name="signup" action="logic/signup.php" method="post">
+				<!-- 注册界面 -->
 				<div class="input_signup active">
 				<div class="userhint">
+				<!-- 默认显示学生账号注册，展示教师注册入框 -->
 				<a>你当前要注册的是学生账号</a>
 				</div>
 					<input class="input" id="user_name" name="name" type="text" aria-label="用户名（包含字母／数字／下划线" placeholder="用户名">
@@ -63,6 +66,7 @@ session_start();
 				</div>
 			</form>
 			<form name="signin" action="logic/signin.php" method="post">
+			<!-- 登录界面 -->
 				<div class="input_signin">
 					<input class="input" id="login_user_name"name="name" type="text" aria-label="用户名" placeholder="用户名">
 					<div class="hint">请输入用户名</div>

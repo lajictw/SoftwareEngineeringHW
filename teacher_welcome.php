@@ -53,6 +53,7 @@ session_start();
 					</div>
 					<div class="Profile-right" >
 						<?php
+						//username显示
 						if (isset($_SESSION['username'])) 
 						{
 							$name = $_SESSION['username'];
@@ -75,6 +76,7 @@ session_start();
 				</div>
 				<div class="w3agile banner-bottom">
 				<ul>
+				<!-- 教师用户可以选择的2个功能 -->
 					<li><a href="select.php" class="hvr-radial-out"><i class="fa fa-star" aria-hidden="true"></i></a><h6>选择优秀作文</h6></li>
 					<li><a href="change.php" class="hvr-radial-out"><i class="fa fa-user" aria-hidden="true"></i></a><h6>修改资料</h6></li>
 				</ul>

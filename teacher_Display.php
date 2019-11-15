@@ -15,9 +15,9 @@ if($rows==0)
 	$flag=false;
 else
 	$flag=true;
-$_SESSION['excellentFlag']=$flag;
+$_SESSION['excellentFlag']=$flag;//设置flag来确认作文是否被设置为优秀作文
 
- function showDiary($filename ='')
+ function showDiary($filename ='')//此函数通过文件路径来在用户页面显示文章
 {
     $file=fopen($filename,"r") or die("Open Error!");
 	while(!feof($file))
@@ -118,8 +118,10 @@ $_SESSION['excellentFlag']=$flag;
 					showDiary($txtpath);
 				?>
 			<div class="starBtn" style="float:right">
+            <!-- 设置优秀作文 -->
 				<h6><?php if($flag)	echo("取消优秀作文"); else echo("设为优秀作文");?></h6><a href="setExcellent.php?id=<?php echo"$id"?>"><i class="fa fa-star" aria-hidden="true"></i></a>
 			</div>
+            <!-- 给作文打分 -->
 			<form style="float:left" name="star" action="setStar.php" method="post">
 		<input id="input-21e" value="<?php echo($score);?>" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs"
 		name="score">
@@ -143,6 +145,7 @@ $_SESSION['excellentFlag']=$flag;
  
 <script src="http://api.51ditu.com/js/ajax.js"></script>
  
+ <!-- 文档展示设置 -->
 <style type="text/css">
 #drawing {
 	text-align : center;

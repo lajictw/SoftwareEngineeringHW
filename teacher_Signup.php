@@ -1,4 +1,5 @@
 <?php
+//本php文件用于教师用户的登录或者注册
 include("./logic/connect.php");
 session_start();
 ?>
@@ -30,6 +31,7 @@ session_start();
 		<div class="login_cont">
 			<div class="login_nav">
 				<div class="nav_slider">
+					<!-- 选择注册或者登录 -->
 					<a href="#" class="signup focus">注册</a>
 					<a href="#" class="signin">登录</a>
 				</div>
@@ -38,6 +40,7 @@ session_start();
 			<form name="signup" action="logic/signup.php?type=2" method="post">
 				<div class="input_signup active">
 				<div class="userhint">
+				<!-- 教师账号注册 -->
 				<a>你当前要注册的是教师账号</a>
 			</div>
 					<input class="input" id="user_name" name="name" type="text" aria-label="用户名（包含字母／数字／下划线" placeholder="用户名">
@@ -53,6 +56,7 @@ session_start();
 				</div>
 			</form>
 			<form name="signin" action="logic/signin.php" method="post">
+			<!-- 教师账号登录 -->
 				<div class="input_signin">
 					<input class="input" id="login_user_name"name="name" type="text" aria-label="用户名" placeholder="用户名">
 					<div class="hint">请输入用户名</div>

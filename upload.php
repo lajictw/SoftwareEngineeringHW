@@ -1,4 +1,5 @@
 <?php
+//本php文件对应学生用户的上传界面
 session_start();
 ?>
 <!DOCTYPE html>
@@ -54,6 +55,7 @@ session_start();
                     </div>
                     <div class="Profile-right">
                     <?php
+                    // 展示用户信息
 						if (isset($_SESSION['username'])) 
 						{
 							$name = $_SESSION['username'];
