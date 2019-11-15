@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();//启用php的session功能
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -7,16 +7,6 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
-<script type="application/x-javascript">
-	addEventListener("load", function() {
-		setTimeout(hideURLbar, 0);
-	}, false);
-
-	function hideURLbar() {
-		window.scrollTo(0, 1);
-	}
-</script>
-<meta charset utf="8">
 
 <head>
 	<!--font-awsome-css-->
@@ -32,20 +22,11 @@ session_start();
 	<script src="travel/js/bootstrap.min.js"></script>
 	<!--script-->
 	<script src="travel/js/modernizr.custom.js"></script>
-	<script src="travel/js/bigSlide.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.menu-link').bigSlide();
-		});
-	</script>
 	<title>欢迎使用微日记</title>
-	<!-- web-fonts -->
-	<link href='http://fonts.useso.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<!-- //web-fonts -->
 </head>
 
 <body>
+<!-- banner -->
 	<div class="body-back">
 		<div class="masthead pdng-stn1">
 			<div class="phone-box wrap push" id="home">
@@ -57,20 +38,18 @@ session_start();
 					<?php
 						if (isset($_SESSION['username'])) 
 						{
-							$name = $_SESSION['username'];
-							
+							$name = $_SESSION['username'];//用于显示用户名
 						}
 						else
-						$name = '游客';
-						if(isset($_SESSION['username']))
-						echo("<a style='float:right' href='./logic/logout.php' class='logout'> 
-						<i class='fa fa-sign-out'></i></a>");
+						$name = '游客';//处理未登录访问
+						if(isset($_SESSION['username']))//防止出现未登录退出的逻辑错位
+						echo("<a style='float:right' href='./logic/logout.php' class='logout'>
+						<i class='fa fa-sign-out'></i></a>");//用于显示登出按钮
 						echo "<a style='float:right'>$name , 你好！</a>";
-						?>
+					?>
 					</div>
 					<div class="clearfix"></div>
 				</div>
-				<!-- banner -->
 				<div class="container">
 		<div class="login_cont">
 			<div class="login_nav">
@@ -78,10 +57,11 @@ session_start();
 					<a class="signup focus">修改资料</a>
 				</div>
 			</div>
+			<!-- 使用表单向信息change_server.php以POST方式发送修改后的个人资料 -->
 			<form name="signup" action="logic/change_server.php" method="post">
 				<div class="input_signup active">
 					<?php
-include "./logic/connect.php";
+include "./logic/connect.php";//连接数据库
 ?>
 					<input class="input" id="user_name" name="name" type="text" aria-label="用户名" placeholder="新用户名">
 					<div class="hint">请填写符合格式的用户名</div>
@@ -95,6 +75,7 @@ include "./logic/connect.php";
 				</div>
 			</form>
 		</div>
+		<!-- scripts 用来完成格式判断和提示显示-->
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/form.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>

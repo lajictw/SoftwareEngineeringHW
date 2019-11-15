@@ -1,7 +1,5 @@
 <?php
-session_start();
-// if(!isset($_SESSION['usertype']))
-// $_SESSION['usertype']=1;
+session_start();//启用php的session功能
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -9,16 +7,6 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
-<script type="application/x-javascript">
-	addEventListener("load", function() {
-		setTimeout(hideURLbar, 0);
-	}, false);
-
-	function hideURLbar() {
-		window.scrollTo(0, 1);
-	}
-</script>
-<meta charset utf="8">
 
 <head>
 	<!--font-awsome-css-->
@@ -30,18 +18,6 @@ session_start();
 	<!--component-css-->
 	<script src="travel/js/jquery-2.1.4.min.js"></script>
 	<script src="travel/js/bootstrap.min.js"></script>
-	<!--script-->
-	<script src="travel/js/modernizr.custom.js"></script>
-	<script src="travel/js/bigSlide.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.menu-link').bigSlide();
-		});
-	</script>
-	<!-- web-fonts -->
-	<link href='http://fonts.useso.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<!-- //web-fonts -->
 </head>
 
 <body>
@@ -52,7 +28,7 @@ session_start();
 					<div class="profile-menu text-center">
 						<img class="border-effect" src="images/pen.png" alt=" ">
 						<h3>微日记</h3>
-
+<!-- 侧边栏特效文本 -->
 						<div class="pro-menu">
 							<div class="logo">
 								<li><a class=" link link--yaku  active" href="index.php"><span>主</span><span>页</span></a></li>
@@ -65,6 +41,7 @@ session_start();
 					</div>
 				</div>
 			</div>
+<!-- banner -->
 			<div class="phone-box wrap push" id="home">
 				<div class="menu-notify">
 					<div class="profile-left">
@@ -96,7 +73,6 @@ session_start();
 					</div>
 					<div class="clearfix"></div>
 				</div>
-				<!-- banner -->
 				<div class="details-grid">
 					<div class="details-shade">
 					</div>

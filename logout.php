@@ -1,9 +1,9 @@
 <?php
-session_start();
+session_start();//启用php的session功能
 if(isset($_SESSION['userid']))
-    unset($_SESSION['userid']);
+    unset($_SESSION['userid']);//抹除session设置
 if(isset($_SESSION['username']))
-    unset($_SESSION['username']);
-header("refresh:0;url=../index.php");
-echo"<script>alert('你已退出登录！')</script>";
+    unset($_SESSION['username']);//抹除session设置
+header("refresh:0;url=../index.php");//跳转到首页
+echo"<script>alert('你已退出登录！')</script>";//显示弹窗
 ?>

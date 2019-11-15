@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();//启用php的session功能
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -7,16 +7,6 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
-<script type="application/x-javascript">
-	addEventListener("load", function() {
-		setTimeout(hideURLbar, 0);
-	}, false);
-
-	function hideURLbar() {
-		window.scrollTo(0, 1);
-	}
-</script>
-<meta charset utf="8">
 
 <head>
 	<!--font-awsome-css-->
@@ -31,19 +21,11 @@ session_start();
 	<!--script-->
 	<script src="travel/js/modernizr.custom.js"></script>
 	<script src="travel/js/bigSlide.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.menu-link').bigSlide();
-		});
-	</script>
 	<title>欢迎使用微日记</title>
-	<!-- web-fonts -->
-	<link href='http://fonts.useso.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<!-- //web-fonts -->
 </head>
 
 <body>
+<!-- banner -->
 	<div class="body-back">
 		<div class="masthead pdng-stn1">
 			<div class="phone-box wrap push" id="home">
@@ -52,27 +34,26 @@ session_start();
 						<h5 class="pro-link"><a href="welcome.php">微日记</a></h5>
 					</div>
 					<div class="Profile-right" >
-						<?php
+					<?php
 						if (isset($_SESSION['username'])) 
 						{
-							$name = $_SESSION['username'];
-							
+							$name = $_SESSION['username'];//用于显示用户名
 						}
 						else
-						$name = '游客';
-						if(isset($_SESSION['username']))
-						echo("<a style='float:right' href='./logic/logout.php' class='logout'> 
-						<i class='fa fa-sign-out'></i></a>");
+						$name = '游客';//处理未登录访问
+						if(isset($_SESSION['username']))//防止出现未登录退出的逻辑错位
+						echo("<a style='float:right' href='./logic/logout.php' class='logout'>
+						<i class='fa fa-sign-out'></i></a>");//用于显示登出按钮
 						echo "<a style='float:right'>$name , 你好！</a>";
-						?>
+					?>
 					</div>
 					<div class="clearfix"></div>
 				</div>
-				<!-- banner -->
 				<div class="details-grid">
 					<div class="details-shade">
 					</div>
 				</div>
+<!-- buttons -->
 				<div class="w3agile banner-bottom">
 				<ul>
 				    <li><a href="upload.php" class="hvr-radial-out"><i class="fa fa-upload" aria-hidden="true"></i></a><h6>上传作文</h6></li>

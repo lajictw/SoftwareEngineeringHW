@@ -1,6 +1,6 @@
 <?php
-session_start();
-include("./logic/connect.php");
+session_start();//启用php的session功能
+include("./logic/connect.php");//连接数据库
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">

@@ -3,22 +3,23 @@ $server = "localhost:3306"; //主机
 $db_username = "root"; //你的数据库用户名
 $db_password = "nmsl"; //你的数据库密码
 
-$con = mysqli_connect($server, $db_username, $db_password); //链接数据库
+$con = mysqli_connect($server, $db_username, $db_password); //连接数据库
 if (!$con) {
-    die("can't connect" . mysql_error());
+    die("can't connect" . mysql_error());//异常处理
 }
 
-mysqli_query($con, "CREATE DATABASE IF NOT EXISTS WeDiary");
-mysqli_select_db($con, "WeDiary");
+mysqli_query($con, "CREATE DATABASE IF NOT EXISTS WeDiary");//检查是否存在WeDiary数据库，不存在则新建一个
+mysqli_select_db($con, "WeDiary");//选中该数据库
 $sql = "CREATE TABLE IF NOT EXISTS users(
         id INT(6)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(30) NOT NULL,
         password VARCHAR(30) NOT NULL,
         email VARCHAR(50) NOT NULL,
         usertype INT(3) 
-        ) default charset=utf8; ";
+        ) default charset=utf8; ";//检查是否存在users数据表，不存在则新建数据表
+        //utf8的设置是为了使数据库内可以存入中文
 if (!$con->query($sql)) {
-    die("创建数据表错误: " . $con->error);
+    die("创建数据表错误: " . $con->error);//异常处理
 }
 $sql = "CREATE TABLE IF NOT EXISTS files(
         id INT(6)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -27,16 +28,18 @@ $sql = "CREATE TABLE IF NOT EXISTS files(
         ftxtpath VARCHAR(50),
         title VARCHAR(30),
         userid INT(6),
-        score DOUBLE        ) default charset=utf8; ";
+        score DOUBLE        ) default charset=utf8; ";//检查是否存在files数据表，不存在则新建数据表
+        //utf8的设置是为了使数据库内可以存入中文
 if (!$con->query($sql)) {
-    die("创建数据表错误: " . $con->error);
+    die("创建数据表错误: " . $con->error);//异常处理
 }
 $sql = "CREATE TABLE IF NOT EXISTS excellent(
         id INT(6)
-        ) default charset=utf8; ";
+        ) default charset=utf8; ";//检查是否存在excellent数据表，不存在则新建数据表
+        //utf8的设置是为了使数据库内可以存入中文
 if (!$con->query($sql)) {
-    die("创建数据表错误: " . $con->error);
+    die("创建数据表错误: " . $con->error);//异常处理
 }
 $sql="set names utf8";
-$con->query($sql);
+$con->query($sql);//utf8的设置是为了使数据库内可以存入中文
 ?>
