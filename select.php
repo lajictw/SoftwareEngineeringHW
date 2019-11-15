@@ -1,6 +1,5 @@
 <?php
 session_start();
-// include("./logic/display.php");
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -83,13 +82,12 @@ session_start();
 	<div id="floater">
         <div id="content">
             <div id="mid-content" >
-                    <?php
-include "./logic/connect.php";
+<?php
+include ("./logic/connect.php");
 $userid = $_SESSION['userid'];
 $sql = "SELECT * from files";
 $result = mysqli_query($con, $sql);
 $rows = mysqli_num_rows($result);
-// $row = mysqli_fetch_assoc($result);
 if ($rows == 0) {
     echo ("<h5 class='info'>当前没有已上传的微日记！</h5>");
 } else {
@@ -99,11 +97,11 @@ echo("<div class='DiaryList'><ul>");
 while($row = mysqli_fetch_array($result))
 	{
 		$fname=$row['fname'];
-		// $fpath=$row['fpath'];
-		// $ftxtpath=$row['ftxtpath'];
 		$id=$row['id'];
 		$score=$row['score'];
-		echo("<li>
+		echo
+		(
+			"<li>
 			<a href='./teacher_Display.php?id=$id'>$fname</a>
 		");
 		$tempsql="SELECT * FROM excellent where id=$id";
@@ -115,26 +113,18 @@ while($row = mysqli_fetch_array($result))
 		"
 		<div style='float:right'>
 		<i class='fa fa-star' id='star' style='color:blue'></i>
-		";}
+		";
+		}
 		if($score==0)
-		echo("<a style='color:black;text-decoration:none'>未评分</a>");
-		else echo("<a style='color:black;text-decoration:none'>{$score}分</a>");
-		echo("</div>");
+			{echo("<a style='color:black;text-decoration:none'>未评分</a>");}
+		else 
+			{echo("<a style='color:black;text-decoration:none'>{$score}分</a>");}
+		if($temprows!=0)
+			echo("</div>");
 		echo("</li>");
 	}
 echo("</ul></div>");
 ?>
-			<!-- <script>
-			$("#teaBtn").click(
-                                	function () {
-										document.getElementById("student").style.display="none";
-										document.getElementById("teacher").style.display="unset";
-										document.getElementById("signForm").elements['flag'].value="2";
-                                }
-							);
-			</script> -->
-                <ul>
-                </ul>
             </div>
         </div>
     </div>

@@ -102,9 +102,8 @@ else
         	}
             
         }
-        $sql = "INSERT INTO files(id,fname,fpath,ftxtpath,userid,score)
-            VALUES (null,'$originname','uploads/$new_filename','$insertname',$userid,0)";
-            // echo("$sql<br>");
+        $sql = "INSERT INTO files(id,fname,fpath,ftxtpath,title,userid,score)
+            VALUES (null,'$originname','uploads/$new_filename','$insertname',null,$userid,0)";
             if (!$con->query($sql)) {
                 die("Insert Error!");
         }
